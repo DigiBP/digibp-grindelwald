@@ -4,7 +4,7 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 
 /**
- * ProcessOrderInput
+ * ProcessOrderInputDelegate
  */
 public class ProcessOrderInputDelegate implements JavaDelegate {
 
