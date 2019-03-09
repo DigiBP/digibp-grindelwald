@@ -102,6 +102,13 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Mocks (Mockito)-->
+        <dependency>
+            <groupId>org.camunda.bpm.extension.mockito</groupId>
+            <artifactId>camunda-bpm-mockito</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
