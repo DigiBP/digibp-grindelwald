@@ -6,9 +6,9 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 
 /**
- * ProcessAnswerDelegate
+ * Sendoffer
  */
-public class ProcessAnswerDelegate implements JavaDelegate {
+public class SendOffer implements JavaDelegate {
 
     private final static Logger LOGGER = Logger.getLogger("GET-FUNDS");
 
