@@ -10,7 +10,7 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
  */
 public class ProcessAnswerDelegate implements JavaDelegate {
 
-    private final static Logger LOGGER = Logger.getLogger("GET-FUNDS");
+    private final static Logger LOGGER = Logger.getLogger("GET-ANSWER");
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
