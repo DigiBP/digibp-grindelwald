@@ -2,6 +2,7 @@ package ch.fhnw.digibp.main.exec;
 
 import java.util.logging.Logger;
 
+import org.camunda.bpm.engine.ProcessEngines;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 
@@ -15,8 +16,8 @@ public class CancelDelegate implements JavaDelegate {
     @Override
     public void execute(DelegateExecution execution) throws Exception {
         LOGGER.info("...");
-        execution.setVariable("caseId", "CASE-001");
-        execution.setVariable("caseType", "RENT");
+        String id = execution.getId();
+        ProcessEngines.getDefaultProcessEngine().getRuntimeService().deleteProcessInstance(execution.getId(), "Compensation");
     }
 
 }
