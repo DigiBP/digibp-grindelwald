@@ -15,9 +15,9 @@ public class ValidateInputDelegate implements JavaDelegate {
     @Override
     public void execute(DelegateExecution execution) throws Exception {
         LOGGER.info("...");
-        execution.setVariable("rentEquipment", true);
-        execution.setVariable("buyTicket", true);
-        execution.setVariable("hireInstructor", true);
+        //execution.setVariable("rentEquipment", true);
+        //execution.setVariable("buyTicket", true);
+        //execution.setVariable("hireInstructor", true);
     }
 
 }
