@@ -15,8 +15,9 @@ public class CancelDelegate implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
-        LOGGER.info("ProcessInstanceId: " + execution.getProcessInstanceId());
-        ProcessEngines.getDefaultProcessEngine().getRuntimeService().deleteProcessInstance(execution.getProcessInstanceId(), "Compensation");
+        LOGGER.info("ProcessInstanceId: " + execution.getProcessInstanceId() + ",CurrentActivityName: " + execution.getCurrentActivityName() );
+        //ProcessEngines.getDefaultProcessEngine().getRuntimeService().deleteProcessInstance(execution.getProcessInstanceId(), "Compensation");
+        execution.getCurrentActivityName();
     }
 
 }
