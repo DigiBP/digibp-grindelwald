@@ -16,6 +16,7 @@
         <spring.boot.version>2.1.1.RELEASE</spring.boot.version>
         <camunda.spring.boot.starter.version>3.2.0</camunda.spring.boot.starter.version>
         <camunda.version>7.10.0</camunda.version>
+        <camunda.version>7.10.0</camunda.version>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
     </properties>
 
@@ -75,12 +76,22 @@
         <dependency>
             <groupId>org.camunda.bpm</groupId>
             <artifactId>camunda-engine-plugin-spin</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.camunda.spin</groupId>
+            <artifactId>camunda-spin-core</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.camunda.spin</groupId>
             <artifactId>camunda-spin-dataformat-all</artifactId>
+            <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.camunda.spin</groupId>
+            <artifactId>camunda-spin-dataformat-json-jackson</artifactId>
+        </dependency>
         <!-- Database (MySQL, H2 or postgresql) drivers -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -102,11 +113,16 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Mocks (Mockito)-->
+        <!-- Junit5 -->
         <dependency>
-            <groupId>org.camunda.bpm.extension.mockito</groupId>
-            <artifactId>camunda-bpm-mockito</artifactId>
-            <version>4.0.0</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>2.1</version>
         </dependency>
 
     </dependencies>
