@@ -15,9 +15,7 @@ public class RequestDAO extends FirestoreDBCon {
     private Firestore db = null;
 
     public RequestDAO() {
-        if (this.db != null){
-            this.db = super.getInstance();
-        }
+        this.db = super.getInstance();
     }
 
     public void registerRequest(String requestId,  Map<String, String> docData) throws InterruptedException, ExecutionException {
