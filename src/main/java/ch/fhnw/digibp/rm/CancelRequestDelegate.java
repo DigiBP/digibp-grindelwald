@@ -12,6 +12,6 @@ public class CancelRequestDelegate implements JavaDelegate {
     public void execute(DelegateExecution execution) throws Exception {
         String businessKey = execution.getBusinessKey();
         System.out.println("Working with request:" + businessKey);
-        request.registerRequest(businessKey, null);
+        request.cancelRequest(businessKey, null);
     }
   }
