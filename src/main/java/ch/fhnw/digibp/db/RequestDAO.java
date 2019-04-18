@@ -23,19 +23,19 @@ public class RequestDAO extends FirestoreDBCon {
         System.out.println("Update time : " + future.get().getUpdateTime());
     };
 
-    public void fulfillRequest() throws InterruptedException, ExecutionException {
-        Map<String, Object> docData = new HashMap<>();
+    public void fulfillRequest(String requestId,  Map<String, Object> docData) throws InterruptedException, ExecutionException {
+        if (docData == null) docData = new HashMap<>();
         docData.put("status", "FULLFILLED");
         docData.put("statusTimestamp", Timestamp.now().toString());
-        ApiFuture<WriteResult> future = db.collection(COLLECTION).document("requestId").update(docData);
+        ApiFuture<WriteResult> future = db.collection(COLLECTION).document(requestId).update(docData);
         System.out.println("Update time : " + future.get().getUpdateTime());
     };
 
-    public void cancelRequest() throws InterruptedException, ExecutionException {
-        Map<String, Object> docData = new HashMap<>();
+    public void cancelRequest(String requestId,  Map<String, Object> docData) throws InterruptedException, ExecutionException {
+        if (docData == null) docData = new HashMap<>();
         docData.put("status", "CANCELLED");
         docData.put("statusTimestamp", Timestamp.now().toString());
-        ApiFuture<WriteResult> future = db.collection(COLLECTION).document("requestId").update(docData);
+        ApiFuture<WriteResult> future = db.collection(COLLECTION).document(requestId).update(docData);
         System.out.println("Update time : " + future.get().getUpdateTime());
     };
 
