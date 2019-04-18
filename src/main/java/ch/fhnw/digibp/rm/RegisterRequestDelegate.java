@@ -25,10 +25,10 @@ public class RegisterRequestDelegate implements JavaDelegate {
         if(request.hasDublicate(businessKey)){
             System.out.println("Working on existing request:" + businessKey);
         }
-        Map<String, String> docData = new HashMap<>();
-        docData.put("customer", (String) execution.getVariable("customer"));
-        docData.put("customer", (String) execution.getVariable("coordination"));
-        docData.put("customer", (String) execution.getVariable("dataDirectlyAvailable"));
+        Map<String, Object> docData = new HashMap<>();
+        docData.put("customer", execution.getVariable("customer"));
+        docData.put("customer", execution.getVariable("coordination"));
+        docData.put("customer", execution.getVariable("dataDirectlyAvailable"));
         docData.put("deadline", Timestamp.parseTimestamp("2020-09-25T00:00:00Z").toString());
         docData.put("status", "OPEN");
         docData.put("statusTimestamp", Timestamp.now().toString());

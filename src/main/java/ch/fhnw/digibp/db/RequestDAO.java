@@ -18,7 +18,7 @@ public class RequestDAO extends FirestoreDBCon {
         this.db = super.getInstance();
     }
 
-    public void registerRequest(String requestId,  Map<String, String> docData) throws InterruptedException, ExecutionException {
+    public void registerRequest(String requestId,  Map<String, Object> docData) throws InterruptedException, ExecutionException {
         ApiFuture<WriteResult> future = db.collection(COLLECTION).document(requestId).set(docData);
         System.out.println("Update time : " + future.get().getUpdateTime());
     };
