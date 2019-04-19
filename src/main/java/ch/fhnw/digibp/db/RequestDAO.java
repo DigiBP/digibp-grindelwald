@@ -37,7 +37,7 @@ public class RequestDAO extends FirestoreDBCon {
     };
 
     public String setDataRequest(String requestId, String dataType, Map<String, Object> docData) throws InterruptedException, ExecutionException {
-        String dataId = UUID.randomUUID().toString()
+        String dataId = UUID.randomUUID().toString();
         if (docData == null) docData = new HashMap<>();
         docData.put("requestTimestamp", Timestamp.now().toString());
         ApiFuture<WriteResult> future = db
