@@ -17,14 +17,7 @@ public class RegisterRequestDelegate implements JavaDelegate {
     RequestDAO request = new RequestDAO();
 
     public void execute(DelegateExecution execution) throws Exception {
-        String businessKey = execution.getBusinessKey();
-        if(StringUtils.isEmpty(businessKey)){
-            businessKey = "R" + UUID.randomUUID().toString();
-            execution.setProcessBusinessKey(businessKey);
-        }
-        if(request.hasDublicate(businessKey)){
-            System.out.println("Working on existing request:" + businessKey);
-        }
+        String requestId = execution.getBusinessKey();
         Map<String, Object> docData = new HashMap<>();
         docData.put("customer", execution.getVariable("customer"));
         docData.put("coordination", execution.getVariable("coordination"));
@@ -32,6 +25,19 @@ public class RegisterRequestDelegate implements JavaDelegate {
         docData.put("deadline", Timestamp.parseTimestamp("2020-09-25T00:00:00Z").toString());
         docData.put("status", "RUNNING");
         docData.put("statusTimestamp", Timestamp.now().toString());
-        request.registerRequest(businessKey, docData);
+        docData.put("status", "RUNNING");
+
+        if(StringUtils.isEmpty(requestId)){
+            System.out.println(this.getClass().getSimpleName() + " - Working on a new request (generated id):" + requestId);
+            requestId = UUID.randomUUID().toString();
+            execution.setProcessBusinessKey(requestId);
+            request.setRequest(requestId, docData);
+        } else if (request.hasDublicate(requestId)){
+            System.out.println(this.getClass().getSimpleName() + " - Working on the existing request:" + requestId);
+            request.updateRequest(requestId, docData);
+        } else {
+            System.out.println(this.getClass().getSimpleName() + " - Working on a new request (provided id):" + requestId);
+            request.setRequest(requestId, docData);
+        }
     }
   }

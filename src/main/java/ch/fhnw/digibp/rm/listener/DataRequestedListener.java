@@ -18,15 +18,19 @@ public class DataRequestedListener implements ExecutionListener {
     public void notify(DelegateExecution execution) throws Exception {
         String requestId = execution.getBusinessKey();
         System.out.println(this.getClass().getSimpleName() + " - Working on the request:" + requestId);
-        //Requester
-        Map<String, Object> requesterInfo = new HashMap<>();
-        requesterInfo.put("dataRequester", execution.getVariable("requester"));
+
         //Data Info
         Map<String, Object> dataInfo = new HashMap<>();
-        dataInfo.put("requester", requesterInfo);
+        dataInfo.put("requesterId", execution.getVariable("requester"));
+
         //Doc Data
         Map<String, Object> docData = new HashMap<>();
+        docData.put("status", "WAITING");
         docData.put(dataType.getValue(execution).toString(), dataInfo);
-        request.waitingDataUpdateRequest(requestId, docData);
+
+        request.updateRequest(requestId, docData);
+
+        dataInfo.put("status", "WAITING");
+        request.setDataRequest(requestId, dataType.getValue(execution).toString(), dataInfo);
     }
   }
