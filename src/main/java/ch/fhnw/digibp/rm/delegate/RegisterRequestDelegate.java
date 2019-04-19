@@ -19,7 +19,7 @@ public class RegisterRequestDelegate implements JavaDelegate {
     public void execute(DelegateExecution execution) throws Exception {
         String requestId = execution.getBusinessKey();
         Map<String, Object> docData = new HashMap<>();
-        docData.put("customer", execution.getVariable("customer"));
+        docData.put("customerId", execution.getVariable("customerId"));
         docData.put("coordination", execution.getVariable("coordination"));
         docData.put("dataDirectlyAvailable", execution.getVariable("dataDirectlyAvailable"));
         docData.put("deadline", Timestamp.parseTimestamp("2020-09-25T00:00:00Z").toString());
