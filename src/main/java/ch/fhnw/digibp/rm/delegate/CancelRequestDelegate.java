@@ -15,14 +15,18 @@ public class CancelRequestDelegate implements JavaDelegate {
     public void execute(DelegateExecution execution) throws Exception {
         String requestId = execution.getBusinessKey();
         System.out.println(this.getClass().getSimpleName() + " - Working on the request:" + requestId);
-        //Data Info
+
+        //Cancellation Data
         Map<String, Object> cancellationInfo = new HashMap<>();
-        cancellationInfo.put("requester", execution.getVariable("cancellationRequester"));
+        cancellationInfo.put("requesterId", execution.getVariable("cancellationRequesterId"));
         cancellationInfo.put("reasonId", execution.getVariable("reasonId"));
         cancellationInfo.put("reasonDescription", execution.getVariable("reasonDescription"));
+
         //Doc Data
         Map<String, Object> docData = new HashMap<>();
-        docData.put("cancellation", cancellationInfo);
-        request.cancelRequest(requestId, docData);
+        docData.put("status", "CANCELLED");
+        docData.put("cancel", cancellationInfo);
+
+        request.updateRequest(requestId, docData);
     }
   }

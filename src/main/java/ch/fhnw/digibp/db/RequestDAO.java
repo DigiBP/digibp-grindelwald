@@ -1,5 +1,6 @@
 package ch.fhnw.digibp.db;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -37,7 +38,7 @@ public class RequestDAO extends FirestoreDBCon {
 
     public void setDataRequest(String requestId, String dataType, Map<String, Object> docData) throws InterruptedException, ExecutionException {
         if (docData == null) docData = new HashMap<>();
-        docData.put("statusTimestamp", Timestamp.now().toString());
+        docData.put("requestTimestamp", Timestamp.now().toString());
         ApiFuture<WriteResult> future = db
         .collection(COLLECTION_REQUEST)
         .document(requestId)
@@ -47,9 +48,9 @@ public class RequestDAO extends FirestoreDBCon {
         System.out.println("Update time : " + future.get().getUpdateTime());
     };
 
-    public void setDataUpload(String requestId, String dataType, Map<String, Object> docData) throws InterruptedException, ExecutionException {
+    public void updateDataUpload(String requestId, String dataType, Map<String, Object> docData) throws InterruptedException, ExecutionException {
         if (docData == null) docData = new HashMap<>();
-        docData.put("statusTimestamp", Timestamp.now().toString());
+        docData.put("uploadTimestamp", Timestamp.now().toString());
         ApiFuture<WriteResult> future = db
         .collection(COLLECTION_REQUEST)
         .document(requestId)

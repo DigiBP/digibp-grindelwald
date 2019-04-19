@@ -21,7 +21,7 @@ public class DataRequestedListener implements ExecutionListener {
 
         //Data Info
         Map<String, Object> dataInfo = new HashMap<>();
-        dataInfo.put("requesterId", execution.getVariable("requester"));
+        dataInfo.put("requesterId", execution.getVariable("requesterId"));
 
         //Doc Data
         Map<String, Object> docData = new HashMap<>();

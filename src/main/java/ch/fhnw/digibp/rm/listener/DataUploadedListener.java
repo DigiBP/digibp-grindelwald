@@ -22,8 +22,8 @@ public class DataUploadedListener implements ExecutionListener {
 
         //Data Info
         Map<String, Object> dataInfo = new HashMap<>();
-        dataInfo.put("requesterId", execution.getVariable("dataRequester"));
-        dataInfo.put("uploaderId", execution.getVariable("dataUploader"));
+        dataInfo.put("requesterId", execution.getVariable("dataRequesterId"));
+        dataInfo.put("uploaderId", execution.getVariable("dataUploaderId"));
         dataInfo.put("uploaderType", uploaderType.getValue(execution).toString());
         dataInfo.put("link", execution.getVariable("link"));
 
@@ -35,6 +35,6 @@ public class DataUploadedListener implements ExecutionListener {
         request.updateRequest(requestId, docData);
 
         dataInfo.put("status", "RUNNING");
-        request.setDataRequest(requestId, dataType.getValue(execution).toString(), dataInfo);
+        request.updateDataUpload(requestId, dataType.getValue(execution).toString(), dataInfo);
     }
   }
