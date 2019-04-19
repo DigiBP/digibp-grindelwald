@@ -22,8 +22,12 @@ public class DataUploadedListener implements ExecutionListener {
         System.out.println(this.getClass().getSimpleName() + " - Working on the request:" + requestId);
 
         String dataId = (String) execution.getVariable(dataType.getValue(execution).toString() + "Id");
-        System.out.println(this.getClass().getSimpleName() + " - Working on the " + dataType.getValue(execution).toString() +":" + (dataId.isEmpty() ? "no id": dataId));
-
+        if (dataId == null || dataId.isEmpty()) {
+            System.out.println(this.getClass().getSimpleName() + " - Working on the " + dataType.getValue(execution).toString() +": no id");
+        }else{
+            System.out.println(this.getClass().getSimpleName() + " - Working on the " + dataType.getValue(execution).toString() +": " + dataId);
+        }
+       
         //Data Info
         Map<String, Object> dataInfo = new HashMap<>();
         dataInfo.put("requesterId", execution.getVariable("requesterId"));
