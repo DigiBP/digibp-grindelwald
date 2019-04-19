@@ -36,26 +36,29 @@ public class RequestDAO extends FirestoreDBCon {
         System.out.println("Update time : " + future.get().getUpdateTime());
     };
 
-    public void setDataRequest(String requestId, String dataType, Map<String, Object> docData) throws InterruptedException, ExecutionException {
+    public String setDataRequest(String requestId, String dataType, Map<String, Object> docData) throws InterruptedException, ExecutionException {
+        String dataId = UUID.randomUUID().toString()
         if (docData == null) docData = new HashMap<>();
         docData.put("requestTimestamp", Timestamp.now().toString());
         ApiFuture<WriteResult> future = db
         .collection(COLLECTION_REQUEST)
         .document(requestId)
         .collection(dataType)
-        .document(UUID.randomUUID().toString())
+        .document(dataId)
         .set(docData);
         System.out.println("Update time : " + future.get().getUpdateTime());
+        return dataId;
     };
 
-    public void updateDataUpload(String requestId, String dataType, Map<String, Object> docData) throws InterruptedException, ExecutionException {
+    public void updateDataUpload(String requestId, String dataType, String dataID, Map<String, Object> docData) throws InterruptedException, ExecutionException {
         if (docData == null) docData = new HashMap<>();
+
         docData.put("uploadTimestamp", Timestamp.now().toString());
         ApiFuture<WriteResult> future = db
         .collection(COLLECTION_REQUEST)
         .document(requestId)
         .collection(dataType)
-        .document(UUID.randomUUID().toString())
+        .document(dataId)
         .update(docData);
         System.out.println("Update time : " + future.get().getUpdateTime());
     };

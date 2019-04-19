@@ -31,6 +31,7 @@ public class DataRequestedListener implements ExecutionListener {
         request.updateRequest(requestId, docData);
 
         dataInfo.put("status", "WAITING");
-        request.setDataRequest(requestId, dataType.getValue(execution).toString(), dataInfo);
+        String dataId = request.setDataRequest(requestId, dataType.getValue(execution).toString(), dataInfo);
+        execution.setVariable(dataType.getValue(execution).toString() + "Id", dataId);
     }
   }

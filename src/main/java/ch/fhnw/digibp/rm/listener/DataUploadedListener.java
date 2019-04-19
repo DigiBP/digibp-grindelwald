@@ -20,6 +20,9 @@ public class DataUploadedListener implements ExecutionListener {
         String requestId = execution.getBusinessKey();
         System.out.println(this.getClass().getSimpleName() + " - Working on the request:" + requestId);
 
+        String dataId = (String) execution.getVariable(dataType.getValue(execution).toString() + "Id");
+        System.out.println(this.getClass().getSimpleName() + " - Working on the " + dataType.getValue(execution).toString() +":" + dataId);
+
         //Data Info
         Map<String, Object> dataInfo = new HashMap<>();
         dataInfo.put("requesterId", execution.getVariable("dataRequesterId"));
@@ -35,6 +38,6 @@ public class DataUploadedListener implements ExecutionListener {
         request.updateRequest(requestId, docData);
 
         dataInfo.put("status", "RUNNING");
-        request.updateDataUpload(requestId, dataType.getValue(execution).toString(), dataInfo);
+        request.updateDataUpload(requestId, dataType.getValue(execution).toString(),dataId, dataInfo);
     }
   }
