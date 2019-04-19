@@ -30,7 +30,7 @@ public class RegisterRequestDelegate implements JavaDelegate {
         docData.put("coordination", execution.getVariable("coordination"));
         docData.put("dataDirectlyAvailable", execution.getVariable("dataDirectlyAvailable"));
         docData.put("deadline", Timestamp.parseTimestamp("2020-09-25T00:00:00Z").toString());
-        docData.put("status", "OPEN");
+        docData.put("status", "RUNNING");
         docData.put("statusTimestamp", Timestamp.now().toString());
         request.registerRequest(businessKey, docData);
     }
