@@ -19,13 +19,16 @@ public class RequestDAO extends FirestoreDBCon {
     }
 
     public void registerRequest(String requestId,  Map<String, Object> docData) throws InterruptedException, ExecutionException {
+        if (docData == null) docData = new HashMap<>();
+        docData.put("status", "RUNNING");
+        docData.put("statusTimestamp", Timestamp.now().toString());
         ApiFuture<WriteResult> future = db.collection(COLLECTION).document(requestId).set(docData);
         System.out.println("Update time : " + future.get().getUpdateTime());
     };
 
     public void fulfillRequest(String requestId,  Map<String, Object> docData) throws InterruptedException, ExecutionException {
         if (docData == null) docData = new HashMap<>();
-        docData.put("status", "FULLFILLED");
+        docData.put("status", "COMPLETED");
         docData.put("statusTimestamp", Timestamp.now().toString());
         ApiFuture<WriteResult> future = db.collection(COLLECTION).document(requestId).update(docData);
         System.out.println("Update time : " + future.get().getUpdateTime());
@@ -39,9 +42,25 @@ public class RequestDAO extends FirestoreDBCon {
         System.out.println("Update time : " + future.get().getUpdateTime());
     };
 
+    public void waitingDataUpdateRequest(String requestId,  Map<String, Object> docData) throws InterruptedException, ExecutionException {
+        if (docData == null) docData = new HashMap<>();
+        docData.put("status", "WAITING");
+        docData.put("statusTimestamp", Timestamp.now().toString());
+        ApiFuture<WriteResult> future = db.collection(COLLECTION).document(requestId).update(docData);
+        System.out.println("Update time : " + future.get().getUpdateTime());
+    };
+
+    public void dataUploadedRequest(String requestId,  Map<String, Object> docData) throws InterruptedException, ExecutionException {
+        if (docData == null) docData = new HashMap<>();
+        docData.put("status", "RUNNING");
+        docData.put("statusTimestamp", Timestamp.now().toString());
+        ApiFuture<WriteResult> future = db.collection(COLLECTION).document(requestId).update(docData);
+        System.out.println("Update time : " + future.get().getUpdateTime());
+    };
+
     public boolean hasDublicate(String requestId) throws InterruptedException, ExecutionException {
         ApiFuture<DocumentSnapshot> query = db.collection(COLLECTION).document(requestId).get();
         return query.get().exists();
-    };
+    }
 
 }

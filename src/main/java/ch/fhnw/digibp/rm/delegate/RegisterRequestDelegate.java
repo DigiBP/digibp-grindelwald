@@ -1,4 +1,4 @@
-package ch.fhnw.digibp.rm;
+package ch.fhnw.digibp.rm.delegate;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,8 +27,8 @@ public class RegisterRequestDelegate implements JavaDelegate {
         }
         Map<String, Object> docData = new HashMap<>();
         docData.put("customer", execution.getVariable("customer"));
-        docData.put("customer", execution.getVariable("coordination"));
-        docData.put("customer", execution.getVariable("dataDirectlyAvailable"));
+        docData.put("coordination", execution.getVariable("coordination"));
+        docData.put("dataDirectlyAvailable", execution.getVariable("dataDirectlyAvailable"));
         docData.put("deadline", Timestamp.parseTimestamp("2020-09-25T00:00:00Z").toString());
         docData.put("status", "OPEN");
         docData.put("statusTimestamp", Timestamp.now().toString());
