@@ -50,7 +50,7 @@ public class RequestDAO extends FirestoreDBCon {
         return dataId;
     };
 
-    public void updateDataUpload(String requestId, String dataType, String dataID, Map<String, Object> docData) throws InterruptedException, ExecutionException {
+    public void updateDataUpload(String requestId, String dataType, String dataId, Map<String, Object> docData) throws InterruptedException, ExecutionException {
         if (docData == null) docData = new HashMap<>();
 
         docData.put("uploadTimestamp", Timestamp.now().toString());
