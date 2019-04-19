@@ -44,7 +44,7 @@ public class DataUploadedListener implements ExecutionListener {
 
         dataInfo.put("status", "COMPLETED");
 
-        if(dataId.isEmpty() || newUpload.getValue(execution).toString().equals("true")) {
+        if(dataId == null || dataId.isEmpty() || newUpload.getValue(execution).toString().equals("true")) {
             dataId = request.setDataRequest(requestId, dataType.getValue(execution).toString(), dataInfo);
             System.out.println(this.getClass().getSimpleName() + " - Working on the " + dataType.getValue(execution).toString() +":" + dataId);
             execution.setVariable(dataType.getValue(execution).toString() + "Id", dataId);
