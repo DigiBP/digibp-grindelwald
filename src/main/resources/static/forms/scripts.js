@@ -9,7 +9,7 @@ var $ = angular.element;
 
 var camClient = new CamSDK.Client({
   mock: false,
-  apiUri: '/engine-rest'
+  apiUri: '/rest'
 });
 
 var taskService = new camClient.resource('task');
