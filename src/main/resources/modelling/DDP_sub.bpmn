@@ -31,19 +31,13 @@
           <camunda:formField id="validData" label="Is data valid?" type="boolean" defaultValue="false" />
         </camunda:formData>
       </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0mp5jsp</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0g60yzd</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:endEvent id="EndEvent_0ymzk2s">
       <bpmn:incoming>SequenceFlow_0a83cvo</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sendTask id="Task_13lm1cm" name="Send inquiry for data upload" camunda:expression="${true}">
-      <bpmn:extensionElements>
-        <camunda:executionListener class="ch.fhnw.digibp.rm.listener.DataRequestedListener" event="start">
-          <camunda:field name="dataType">
-            <camunda:string>data</camunda:string>
-          </camunda:field>
-        </camunda:executionListener>
-      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0tyn2nx</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_0k1ghn6</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0mq8h3e</bpmn:outgoing>
@@ -72,6 +66,7 @@
         </camunda:executionListener>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_017fmg8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0mp5jsp</bpmn:outgoing>
       <bpmn:messageEventDefinition messageRef="Message_0jqqlur" />
     </bpmn:intermediateCatchEvent>
     <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_0o3fhb5" name="Data delivery deadline">
@@ -96,6 +91,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0bxkhht" sourceRef="ExclusiveGateway_1c2zieo" targetRef="IntermediateCatchEvent_0o3fhb5" />
     <bpmn:sequenceFlow id="SequenceFlow_10jm6hl" sourceRef="IntermediateCatchEvent_0o3fhb5" targetRef="EndEvent_0fjgfbs" />
     <bpmn:sequenceFlow id="SequenceFlow_017fmg8" sourceRef="ExclusiveGateway_1c2zieo" targetRef="IntermediateThrowEvent_099okfu" />
+    <bpmn:sequenceFlow id="SequenceFlow_0mp5jsp" sourceRef="IntermediateThrowEvent_099okfu" targetRef="Task_0zevn7b" />
     <bpmn:textAnnotation id="TextAnnotation_0p6icpb">
       <bpmn:text>Reason for human intervention: quality ensurance</bpmn:text>
     </bpmn:textAnnotation>
@@ -207,6 +203,10 @@
       <bpmndi:BPMNEdge id="Association_0by7wzo_di" bpmnElement="Association_0by7wzo">
         <di:waypoint x="755" y="395" />
         <di:waypoint x="755" y="341" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0mp5jsp_di" bpmnElement="SequenceFlow_0mp5jsp">
+        <di:waypoint x="639" y="435" />
+        <di:waypoint x="705" y="435" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
