@@ -1,3 +1,4 @@
+load('classpath:scripts/moment.js')
 out=JSON.stringify({
     "personalizations": [
         {
