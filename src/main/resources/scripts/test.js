@@ -11,7 +11,7 @@ out=JSON.stringify({
                 "submissionDate": submissionDate.toLocaleFormat('%d-%b-%Y'),
                 "requestID": requestID,
                 "clientName": clientName,
-                "yearEndDate": yearEndDate..toLocaleFormat('%d-%b-%Y'),
+                "yearEndDate": yearEndDate.toLocaleFormat('%d-%b-%Y'),
                 "emailAuditTeam": emailAuditTeam,
                 "emailDataProvider": emailDataProvider,
                 "productionSelection": productionSelection,
