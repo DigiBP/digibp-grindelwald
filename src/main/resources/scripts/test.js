@@ -8,10 +8,10 @@ out=JSON.stringify({
                 }
             ],
             "dynamic_template_data": {
-                "submissionDate": submissionDate.toLocaleFormat('%d-%b-%Y'),
+                "submissionDate": moment(submissionDate).format("YYYY-MM-DD"),
                 "requestID": requestID,
                 "clientName": clientName,
-                "yearEndDate": yearEndDate.toLocaleFormat('%d-%b-%Y'),
+                "yearEndDate": moment(yearEndDate).format("YYYY-MM-DD"),
                 "emailAuditTeam": emailAuditTeam,
                 "emailDataProvider": emailDataProvider,
                 "productionSelection": productionSelection,
