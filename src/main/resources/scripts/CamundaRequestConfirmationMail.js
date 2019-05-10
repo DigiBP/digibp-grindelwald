@@ -9,28 +9,28 @@ out=JSON.stringify({
                 }
             ],
             "dynamic_template_data": {
-                "submissionDate": moment(submissionDate).format("YYYY-MM-DD"),
+                "submissionDate": moment(submissionDate).format("DD.MM.YYYY"),
                 "requestID": requestID,
                 "clientName": clientName,
-                "yearEndDate": moment(yearEndDate).format("YYYY-MM-DD"),
+                "yearEndDate": moment(yearEndDate).format("DD.MM.YYYY"),
                 "emailAuditTeam": emailAuditTeam,
                 "emailDataProvider": emailDataProvider,
                 "productionSelection": productionSelection,
-                "deliveryDate": deliveryDate,
+                "deliveryDate": moment(deliveryDate).format("DD.MM.YYYY"),
                 "coveredPeriod": coveredPeriod,
-                "analysisDate": analysisDate,
-                "comparativeDate": comparativeDate,
+                "analysisDate": moment(analysisDate).format("DD.MM.YYYY"),
+                "comparativeDate": moment(comparativeDate).format("DD.MM.YYYY"),
                 "closureOfAccounts": closureOfAccounts,
                 "freeText": freeText
             }
         }
     ],
     "from": {
-        "email": "noreply@johndoe.com",
+        "email": "noreply.bananaanalytics.com",
         "name": "Abu the Ape"
     },
     "reply_to": {
-        "email": "noreply@johndoe.com",
+        "email": "noreply.bananaanalytics.com",
         "name": "Abu the Ape"
     },
     "template_id": "d-3ffde2a6cf534d2ab6332bbbbf4cb24f"
