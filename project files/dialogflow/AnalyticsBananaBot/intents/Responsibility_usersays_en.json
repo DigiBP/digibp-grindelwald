@@ -1,0 +1,90 @@
+[
+  {
+    "id": "0219941c-bb14-455c-9409-f8067ec0fd05",
+    "data": [
+      {
+        "text": "Which team member is preparing my project?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "ae7b20a4-3e6e-4898-bad7-3404c25a9cb5",
+    "data": [
+      {
+        "text": "Which team member is preparing my cube?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "3cae421a-695e-4a5f-b539-b3fcd55d7ccf",
+    "data": [
+      {
+        "text": "Which team member is preparing my data?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "72055c0e-7b60-498a-b842-504b4ff8f0c8",
+    "data": [
+      {
+        "text": "Who is responsible?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "48d46ca6-4d62-45c2-b3f0-96f801fc92de",
+    "data": [
+      {
+        "text": "Who prepares my data?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "8c2de392-b0a3-46c4-8783-2d967b91a49b",
+    "data": [
+      {
+        "text": "Who cubes my cube?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "33b2470c-f616-435d-9c01-b95fb15b6879",
+    "data": [
+      {
+        "text": "Who is responsible for my project?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "80ea6982-269b-4547-bf52-2e9e08c1d5a8",
+    "data": [
+      {
+        "text": "Who is responsible for my cube?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "id": "966927aa-39f5-4d73-8ceb-070c680ea5e5",
+  "name": "ProjectStatus",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "db680b24-2560-4efc-9987-ee002a7f55a6",
+          "required": true,
+          "dataType": "@ClientName",
+          "name": "Client",
+          "value": "$Name",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Which client do you refer to?"
+            }
+          ],
+          "isList": false
+        },
+        {
+          "id": "b40a08bb-7a67-4c02-943f-ca63eefb9aca",
+          "required": false,
+          "dataType": "@ProzessStep",
+          "name": "Step",
+          "value": "$Step",
+          "isList": false
+        },
+        {
+          "id": "cc8ece01-3635-42be-8147-b4c3de387e51",
+          "required": false,
+          "dataType": "@ClientPreparer",
+          "name": "ClientPreparer",
+          "value": "$ClientPreparer",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

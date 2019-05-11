@@ -1,0 +1,17 @@
+[
+  {
+    "value": "Test",
+    "synonyms": [
+      "Test"
+    ]
+  },
+  {
+    "value": "Team member",
+    "synonyms": [
+      "Team member",
+      "team",
+      "person",
+      "who"
+    ]
+  }
+]

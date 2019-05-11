@@ -1,0 +1,9 @@
+{
+  "id": "cec27ca1-85a5-4d71-9b32-1530207ffde9",
+  "name": "ProzessStep",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": false,
+  "allowFuzzyExtraction": false
+}
