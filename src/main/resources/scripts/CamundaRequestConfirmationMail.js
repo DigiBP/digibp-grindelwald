@@ -16,14 +16,7 @@ out=JSON.stringify({
                 "emailAuditTeam": emailAuditTeam,
                 "clientID":clientID,
                 "productionSelection": productionSelection,
-                "yearEndDate": moment(yearEndDate).format("DD.MM.YYYY"),
-                "deliveryDate": moment(deliveryDate).format("DD.MM.YYYY"),
-                "analysisDate": moment(analysisDate).format("DD.MM.YYYY"),
-                "comparativeDate": moment(comparativeDate).format("DD.MM.YYYY"),
-                "closureOfAccounts": moment(closureOfAccounts).format("DD.MM.YYYY"),
-                "coveredPeriod": coveredPeriod,
-                "freeText": freeText,
-                "requestFolderShareLink": requestFolderShareLink
+
             }
         }
     ],
