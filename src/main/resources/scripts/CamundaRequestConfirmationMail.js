@@ -1,27 +1,39 @@
 load('classpath:scripts/moment.js')
 out=JSON.stringify({
-    
-        "personalizations": [
-          {
+    "personalizations": [
+        {
             "to": [
                 {
-                "email" : "hiwoca@mail-finder.net",
-                "name" : "TT"
-              }
+                    "email": emailAuditTeam,
+                    "name": "Audit Team"
+                }
             ],
             "dynamic_template_data": {
-              "name": "TT"
+                "submissionDate": moment(submissionDate).format("DD.MM.YYYY"),
+                "requestID": requestID,
+                "nameDataProvider": nameDataProvider,
+                "emailDataProvider": emailDataProvider,
+                "emailAuditTeam": emailAuditTeam,
+                "clientID":clientID,
+                "productionSelection": productionSelection,
+                "yearEndDate": moment(yearEndDate).format("DD.MM.YYYY"),
+                "deliveryDate": moment(deliveryDate).format("DD.MM.YYYY"),
+                "analysisDate": moment(analysisDate).format("DD.MM.YYYY"),
+                "comparativeDate": moment(comparativeDate).format("DD.MM.YYYY"),
+                "closureOfAccounts": moment(closureOfAccounts).format("DD.MM.YYYY"),
+                "coveredPeriod": coveredPeriod,
+                "freeText": freeText,
+                "requestFolderShareLink": requestFolderShareLink
             }
-          }
-        ],
-        "from": {
-          "email": "noreply@johndoe.com",
-          "name": "John Doe"
-        },
-        "reply_to": {
-          "email": "noreply@johndoe.com",
-          "name": "John Doe"
-        },
-        "template_id": "d-ca56e522541240059bc97b6d8ca41f9c"
-      
+        }
+    ],
+    "from": {
+        "email": "noreply@bananaanalytics.com",
+        "name": "Abu the Ape"
+    },
+    "reply_to": {
+        "email": "noreply@bananaanalytics.com",
+        "name": "Abu the Ape"
+    },
+    "template_id": "d-ca56e522541240059bc97b6d8ca41f9c"
 });

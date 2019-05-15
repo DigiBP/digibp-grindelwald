@@ -4,8 +4,8 @@ out=JSON.stringify({
         {
             "to": [
                 {
-                    "email": emailDataProvider,
-                    "name": nameDataProvider
+                    "email": emailAuditTeam,
+                    "name": "Audit Team"
                 }
             ],
             "dynamic_template_data": {
@@ -28,11 +28,11 @@ out=JSON.stringify({
         }
     ],
     "from": {
-        "email": "noreply.bananaanalytics.com",
+        "email": "noreply@bananaanalytics.com",
         "name": "Abu the Ape"
     },
     "reply_to": {
-        "email": "noreply.bananaanalytics.com",
+        "email": "noreply@bananaanalytics.com",
         "name": "Abu the Ape"
     },
     "template_id": "d-ca56e522541240059bc97b6d8ca41f9c"

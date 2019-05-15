@@ -452,7 +452,8 @@
           <camunda:connector>
             <camunda:inputOutput>
               <camunda:inputParameter name="method">POST</camunda:inputParameter>
-              <camunda:inputParameter name="url">https://api.sendgrid.com/v3/mail/send</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://enfw23roohoi.x.pipedream.net/
+</camunda:inputParameter>
               <camunda:inputParameter name="headers">
                 <camunda:map>
                   <camunda:entry key="Content-Type">application/json</camunda:entry>
