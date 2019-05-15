@@ -4,34 +4,36 @@ out=JSON.stringify({
         {
             "to": [
                 {
-                    "email": "anton.lorvi@students.fhnw.ch",
-                    "name": "Anton Lorvi"
+                    "email": emailDataProvider,
+                    "name": nameDataProvider
                 }
             ],
             "dynamic_template_data": {
                 "submissionDate": moment(submissionDate).format("DD.MM.YYYY"),
                 "requestID": requestID,
-                "clientName": clientName,
-                "yearEndDate": moment(yearEndDate).format("DD.MM.YYYY"),
-                "emailAuditTeam": emailAuditTeam,
+                "nameDataProvider": nameDataProvider,
                 "emailDataProvider": emailDataProvider,
+                "emailAuditTeam": emailAuditTeam,
+                "clientID":clientID,
                 "productionSelection": productionSelection,
+                "yearEndDate": moment(yearEndDate).format("DD.MM.YYYY"),
                 "deliveryDate": moment(deliveryDate).format("DD.MM.YYYY"),
-                "coveredPeriod": coveredPeriod,
                 "analysisDate": moment(analysisDate).format("DD.MM.YYYY"),
                 "comparativeDate": moment(comparativeDate).format("DD.MM.YYYY"),
-                "closureOfAccounts": closureOfAccounts,
-                "freeText": freeText
+                "closureOfAccounts": moment(closureOfAccounts).format("DD.MM.YYYY"),
+                "coveredPeriod": coveredPeriod,
+                "freeText": freeText,
+                "requestFolderShareLink": requestFolderShareLink
             }
         }
     ],
     "from": {
-        "email": "noreply@johndoe.com",
+        "email": "noreply.bananaanalytics.com",
         "name": "Abu the Ape"
     },
     "reply_to": {
-        "email": "noreply@johndoe.com",
+        "email": "noreply.bananaanalytics.com",
         "name": "Abu the Ape"
     },
-    "template_id": "d-4f372698e05449dba7fbfb95361bd641"
+    "template_id": "d-ca56e522541240059bc97b6d8ca41f9c"
 });

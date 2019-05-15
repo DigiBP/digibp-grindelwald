@@ -262,7 +262,7 @@
         <bpmn:sourceRef>DataStoreReference_0vmvza2</bpmn:sourceRef>
         <bpmn:targetRef>Property_1sy71kt</bpmn:targetRef>
       </bpmn:dataInputAssociation>
-      <bpmn:userTask id="Task_1uvq6qn" name="Transform Data">
+      <bpmn:userTask id="Task_1uvq6qn" name="Transform Data" camunda:formKey="CamundaDataMappingUploadForm.html">
         <bpmn:extensionElements>
           <camunda:formData>
             <camunda:formField id="validTransformation" label="Was the transformation successful?" type="boolean" defaultValue="false" />
