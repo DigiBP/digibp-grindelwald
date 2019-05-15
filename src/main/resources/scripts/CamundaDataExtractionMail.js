@@ -26,12 +26,12 @@ out=JSON.stringify({
         }
     ],
     "from": {
-        "email": "noreply@johndoe.com",
+        "email": "noreply.bananaanalytics.com",
         "name": "Abu the Ape"
     },
     "reply_to": {
-        "email": "noreply@johndoe.com",
+        "email": "noreply.bananaanalytics.com",
         "name": "Abu the Ape"
     },
-"template_id": "d-6b8bc5e0db854778a0eed1287639a7f7"
+    "template_id": "d-6b8bc5e0db854778a0eed1287639a7f7"
 });
