@@ -1,0 +1,251 @@
+[
+  {
+    "id": "6aff77b1-ab3e-4ed8-8d72-57ea08f2ae51",
+    "data": [
+      {
+        "text": "Which ",
+        "userDefined": false
+      },
+      {
+        "text": "team member",
+        "alias": "ClientPreparer",
+        "meta": "@ClientPreparer",
+        "userDefined": false
+      },
+      {
+        "text": " is responsible for my project?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "b0b6b382-eefd-4ef1-a709-1518a53b4610",
+    "data": [
+      {
+        "text": "which ",
+        "userDefined": false
+      },
+      {
+        "text": "team member",
+        "alias": "ClientPreparer",
+        "meta": "@ClientPreparer",
+        "userDefined": false
+      },
+      {
+        "text": " is responsible for my cube?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "8ba782ed-61a1-4f9b-a9b8-254f34787130",
+    "data": [
+      {
+        "text": "Who",
+        "alias": "ClientPreparer",
+        "meta": "@ClientPreparer",
+        "userDefined": true
+      },
+      {
+        "text": " is doing my cube?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "11ec4067-d33b-407e-a4fa-be69a8d147d6",
+    "data": [
+      {
+        "text": "Who",
+        "alias": "ClientPreparer",
+        "meta": "@ClientPreparer",
+        "userDefined": true
+      },
+      {
+        "text": " is doing my project?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "bcc7bbfa-482e-4e68-af08-49bad3ed9fcc",
+    "data": [
+      {
+        "text": "how can I find out the ",
+        "userDefined": false
+      },
+      {
+        "text": "status",
+        "alias": "Step",
+        "meta": "@ProzessStep",
+        "userDefined": true
+      },
+      {
+        "text": " of a project?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "58f464b8-6c8e-47da-8203-e8a0290c7eff",
+    "data": [
+      {
+        "text": "how can I find out the ",
+        "userDefined": false
+      },
+      {
+        "text": "status",
+        "alias": "Step",
+        "meta": "@ProzessStep",
+        "userDefined": true
+      },
+      {
+        "text": " of a cube?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "a63c6b5b-6ad7-42cf-a17a-d943ded13e12",
+    "data": [
+      {
+        "text": "I have a cube in progress, whats it\u0027s ",
+        "userDefined": false
+      },
+      {
+        "text": "status",
+        "alias": "Step",
+        "meta": "@ProzessStep",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "81ac57a6-d751-4b98-8687-91bed6e46a60",
+    "data": [
+      {
+        "text": "status",
+        "alias": "Step",
+        "meta": "@ProzessStep",
+        "userDefined": true
+      },
+      {
+        "text": " information",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "1c242c12-4725-41ad-af32-2f7c5dcabfee",
+    "data": [
+      {
+        "text": "whats the ",
+        "userDefined": false
+      },
+      {
+        "text": "status",
+        "alias": "Step",
+        "meta": "@ProzessStep",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "38c1db9e-fe1d-4c1e-b7b2-76c1c9bdb831",
+    "data": [
+      {
+        "text": "project ",
+        "userDefined": false
+      },
+      {
+        "text": "status",
+        "alias": "Step",
+        "meta": "@ProzessStep",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "cf81af02-09a4-4502-a176-17ff8b0e0291",
+    "data": [
+      {
+        "text": "Cube ",
+        "userDefined": false
+      },
+      {
+        "text": "status",
+        "alias": "Step",
+        "meta": "@ProzessStep",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "c2afc04a-b553-43dd-9a54-54622e1f8200",
+    "data": [
+      {
+        "text": "I would like to know the ",
+        "userDefined": false
+      },
+      {
+        "text": "status",
+        "alias": "Step",
+        "meta": "@ProzessStep",
+        "userDefined": true
+      },
+      {
+        "text": " of my cube.",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "0e828376-c10e-4062-87f3-7f4e3ce1fca0",
+    "data": [
+      {
+        "text": "I would like to know the ",
+        "userDefined": false
+      },
+      {
+        "text": "status",
+        "alias": "Step",
+        "meta": "@ProzessStep",
+        "userDefined": true
+      },
+      {
+        "text": " of my project.",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  }
+]
