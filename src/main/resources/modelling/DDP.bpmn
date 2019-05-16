@@ -104,7 +104,7 @@
               <camunda:inputParameter name="headers">
                 <camunda:map>
                   <camunda:entry key="Content-Type">application/json</camunda:entry>
-                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
+                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
                 </camunda:map>
               </camunda:inputParameter>
               <camunda:inputParameter name="payload">
@@ -149,7 +149,7 @@
               <camunda:inputParameter name="headers">
                 <camunda:map>
                   <camunda:entry key="Content-Type">application/json</camunda:entry>
-                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
+                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
                 </camunda:map>
               </camunda:inputParameter>
               <camunda:inputParameter name="payload">
@@ -346,7 +346,7 @@
               <camunda:inputParameter name="headers">
                 <camunda:map>
                   <camunda:entry key="Content-Type">application/json</camunda:entry>
-                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
+                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
                 </camunda:map>
               </camunda:inputParameter>
               <camunda:inputParameter name="payload">
@@ -463,7 +463,7 @@
               <camunda:inputParameter name="headers">
                 <camunda:map>
                   <camunda:entry key="Content-Type">application/json</camunda:entry>
-                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
+                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
                 </camunda:map>
               </camunda:inputParameter>
               <camunda:inputParameter name="payload">
