@@ -15,7 +15,7 @@ out=JSON.stringify({
                 "emailDataProvider": emailDataProvider,
                 "emailAuditTeam": emailAuditTeam,
                 "clientID":clientID,
-                "productionSelection": productionSelection,
+                "productSelection": productSelection,
                 "yearEndDate": moment(yearEndDate).format("DD.MM.YYYY"),
                 "deliveryDate": moment(deliveryDate).format("DD.MM.YYYY"),
                 "analysisDate": moment(analysisDate).format("DD.MM.YYYY"),
@@ -35,5 +35,5 @@ out=JSON.stringify({
         "email": "noreply@bananaanalytics.com",
         "name": "Abu the Ape"
     },
-    "template_id": "d-ca56e522541240059bc97b6d8ca41f9c"
+    "template_id": "d-3ffde2a6cf534d2ab6332bbbbf4cb24f"
 });
