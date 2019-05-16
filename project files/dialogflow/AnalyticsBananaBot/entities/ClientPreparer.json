@@ -1,0 +1,9 @@
+{
+  "id": "42c4a85c-9173-4d8e-89cb-6f339dde9bfe",
+  "name": "ClientPreparer",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": true,
+  "allowFuzzyExtraction": false
+}
