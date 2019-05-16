@@ -9,21 +9,7 @@ out=JSON.stringify({
                 }
             ],
             "dynamic_template_data": {
-                "submissionDate": moment(submissionDate).format("DD.MM.YYYY"),
-                "requestID": requestID,
-                "nameDataProvider": nameDataProvider,
-                "emailDataProvider": emailDataProvider,
-                "emailAuditTeam": emailAuditTeam,
-                "clientID":clientID,
-                "productionSelection": productionSelection,
-                "yearEndDate": moment(yearEndDate).format("DD.MM.YYYY"),
-                "deliveryDate": moment(deliveryDate).format("DD.MM.YYYY"),
-                "analysisDate": moment(analysisDate).format("DD.MM.YYYY"),
-                "comparativeDate": moment(comparativeDate).format("DD.MM.YYYY"),
-                "closureOfAccounts": moment(closureOfAccounts).format("DD.MM.YYYY"),
-                "coveredPeriod": coveredPeriod,
-                "freeText": freeText,
-                "requestFolderShareLink": requestFolderShareLink
+                "datacubeFolderShareLink": datacubeFolderShareLink
             }
         }
     ],
@@ -35,5 +21,5 @@ out=JSON.stringify({
         "email": "noreply@bananaanalytics.com",
         "name": "Abu the Ape"
     },
-    "template_id": "d-ca56e522541240059bc97b6d8ca41f9c"
+    "template_id": "d-6cf1059ee8b74a529ea23440ff4b9c53"
 });
