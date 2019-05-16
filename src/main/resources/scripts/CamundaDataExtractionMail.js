@@ -4,8 +4,8 @@ out=JSON.stringify({
         {
             "to": [
                 {
-                    "email": emailAuditTeam,
-                    "name": "Audit Team"
+                    "email": emailDataProvider,
+                    "name": nameDataProvider
                 }
             ],
             "dynamic_template_data": {
