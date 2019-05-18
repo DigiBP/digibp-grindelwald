@@ -1,14 +1,14 @@
 <h3>Request Form</h3>
 <form role="form" name="variablesForm">
 
-    <script cam-script type="text/form-script">
-      $scope.open = function($event, dateFieldOpened) {
-        $event.preventDefault();
-        $event.stopPropagation();
-    
-        $scope[dateFieldOpened] = true;
-      };
-    </script>
+          <script cam-script type="text/form-script">
+            $scope.open = function($event, dateFieldOpened) {
+              $event.preventDefault();
+              $event.stopPropagation();
+          
+              $scope[dateFieldOpened] = true;
+            };
+          </script>
 
     <div class="form-group">
         <label for="inputClientID">Client ID</label>
@@ -32,7 +32,6 @@
                  cam-variable-name="yearEndDate"
                  cam-variable-type="Date"
                  class="form-control"
-                 placeholder="yyyy-MM-dd'T'HH:mm:ss / eg. 01-01-2010T00:00:00"
                  datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
                  is-open="yearEndDatePicker" />
           
@@ -108,7 +107,6 @@
                    cam-variable-name="deliveryDate"
                    cam-variable-type="Date"
                    class="form-control"
-                   placeholder="yyyy-MM-dd'T'HH:mm:ss / eg. 01-01-2010T00:00:00"
                    datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
                    is-open="deliveryDatePicker" />
             
@@ -144,7 +142,6 @@
                    cam-variable-name="analysisDate"
                    cam-variable-type="Date"
                    class="form-control"
-                   placeholder="yyyy-MM-dd'T'HH:mm:ss / eg. 01-01-2010T00:00:00"
                    datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
                    is-open="analysisDatePicker" />
             
@@ -166,7 +163,6 @@
                    cam-variable-name="comparativeDate"
                    cam-variable-type="Date"
                    class="form-control"
-                   placeholder="yyyy-MM-dd'T'HH:mm:ss / eg. 01-01-2010T00:00:00"
                    datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
                    is-open="comparativeDatePicker" />
             
