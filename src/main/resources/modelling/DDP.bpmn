@@ -797,7 +797,7 @@
     </bpmn:intermediateThrowEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1c71t1g" sourceRef="IntermediateThrowEvent_0lsh2z7" targetRef="EndEvent_040dklh" />
     <bpmn:dataStoreReference id="DataStoreReference_0vmvza2" name="Team-share" />
-    <bpmn:startEvent id="StartEvent_14tnhon" name="Request received" camunda:formKey="CamundaStartForm.html">
+    <bpmn:startEvent id="StartEvent_14tnhon" name="Request received" camunda:formKey="embedded:app:CamundaStartForm.html">
       <bpmn:outgoing>SequenceFlow_0dc9em6</bpmn:outgoing>
       <bpmn:messageEventDefinition messageRef="Message_0cops97" />
     </bpmn:startEvent>
