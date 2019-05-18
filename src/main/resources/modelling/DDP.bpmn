@@ -475,9 +475,7 @@
             </camunda:inputOutput>
             <camunda:connectorId>http-connector</camunda:connectorId>
           </camunda:connector>
-          <camunda:executionListener event="end">
-            <camunda:script scriptFormat="javascript">execution.setProcessBusinessKey(requestID);</camunda:script>
-          </camunda:executionListener>
+          <camunda:executionListener class="ch.fhnw.digibp.rm.GenerateRequestIDListener" event="start" />
         </bpmn:extensionElements>
         <bpmn:incoming>SequenceFlow_1608paw</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_1jux0xz</bpmn:outgoing>
