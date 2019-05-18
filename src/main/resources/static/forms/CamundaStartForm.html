@@ -16,6 +16,28 @@
       </div>
 
       <div class="form-group">
+        <label for="inputEmailAuditTeam">eMail audit team</label>
+        <div class="input-append date form_datetime">
+          <input size="16" 
+              type="text" 
+              value=""
+              cam-variable-name="yearEndDate"
+              cam-variable-type="Date" 
+              readonly>
+          <span class="add-on"><i class="icon-th"></i></span>
+        </div>
+       
+        <script type="text/javascript">
+            $(".form_datetime").datetimepicker({
+                format: "dd-MM-yyyy",
+                autoclose: true,
+                todayBtn: true,
+                pickerPosition: "bottom-left"
+            });
+        </script>
+      </div>
+
+      <div class="form-group">
           <label for="inputEmailAuditTeam">eMail audit team</label>
           <div class="controls">
             <input class="form-control"
