@@ -1,15 +1,6 @@
 <h3>Request Form</h3>
 <form role="form" name="variablesForm">
 
-    <script cam-script type="text/form-script">
-      $scope.open = function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-    
-        $scope.dateFieldOpened = true;
-      };
-    </script>
-
     <div class="form-group">
         <label for="inputClientID">Client ID</label>
         <div class="controls">
@@ -33,16 +24,24 @@
                  cam-variable-type="Date"
                  class="form-control"
                  datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
-                 is-open="dateFieldOpened" />
+                 is-open="yearEndDatePicker" />
           
             <span class="input-group-btn">
               <button type="button"
                       class="btn btn-default"
-                      ng-click="open($event)">
+                      ng-click="open($event, 'yearEndDatePicker')">
                 <i class="glyphicon glyphicon-calendar"></i>
               </button>
             </span>
         </p>
+        <script cam-script type="text/form-script">
+          $scope.open = function($event,$dateFieldOpened) {
+            $event.preventDefault();
+            $event.stopPropagation();
+        
+            $scope[dateFieldOpened] = true;
+          };
+        </script>
       </div>
 
       <div class="form-group">
@@ -58,146 +57,5 @@
                   ng-maxlength="40" />
           </div>
       </div>
-
-      <div class="form-group">
-          <label for="inputNameDataProvider">Name data provider</label>
-          <div class="controls">
-            <input class="form-control"
-                  required
-                  type="text"
-                  cam-variable-name="nameDataProvider"
-                  cam-variable-type="String"
-                  placeholder="John Doe"
-                  ng-minlength="2"
-                  ng-maxlength="40" />
-          </div>
-        </div>
-
-      <div class="form-group">
-          <label for="inputEmailDataProvider">eMail data provider</label>
-          <div class="controls">
-            <input class="form-control"
-                  required
-                  type="text"
-                  cam-variable-name="emailDataProvider"
-                  cam-variable-type="String"
-                  placeholder="john.doe@fhnw.ch"
-                  ng-minlength="2"
-                  ng-maxlength="40" />
-          </div>
-      </div>
-
-      <div class="form-group">
-          <label for="inputProductSelection">Product selection</label>
-          <select class="custom-select"
-                cam-variable-name="productSelection"
-                cam-variable-type="String" >
-            <option selected>Choose the product...</option>
-            <option value="1">GLA</option>
-            <option value="2">SLA</option>
-            <option value="3">...</option>
-          </select>
-      </div>
-
-      <div class="form-group">
-          <label for="inputDeliveryDate">Delivery date</label>
-          <p class="input-group">
-  
-              <input type="text"
-                   cam-variable-name="deliveryDate"
-                   cam-variable-type="Date"
-                   class="form-control"
-                   datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
-                   is-open="dateFieldOpened" />
-            
-              <span class="input-group-btn">
-                <button type="button"
-                        class="btn btn-default"
-                        ng-click="open($event)">
-                  <i class="glyphicon glyphicon-calendar"></i>
-                </button>
-              </span>
-          </p>
-      </div>
-
-      <div class="form-group">
-        <label for="inputCoveredPeriod">Covered period</label>
-        <div class="controls">
-          <input class="form-control"
-                required
-                type="text"
-                cam-variable-name="coveredPeriod"
-                cam-variable-type="String"
-                placeholder="dd-MM-yyyy - dd-MM-yyyy / eg. 01-01-2010 - 31-12-2010"
-                ng-minlength="2"
-                ng-maxlength="50" />
-        </div>
-      </div>
-
-      <div class="form-group">
-          <label for="inputAnalysisDate">Analysis date</label>
-          <p class="input-group">
-  
-              <input type="text"
-                   cam-variable-name="analysisDate"
-                   cam-variable-type="Date"
-                   class="form-control"
-                   datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
-                   is-open="dateFieldOpened" />
-            
-              <span class="input-group-btn">
-                <button type="button"
-                        class="btn btn-default"
-                        ng-click="open($event)">
-                  <i class="glyphicon glyphicon-calendar"></i>
-                </button>
-              </span>
-          </p>
-      </div>
-
-      <div class="form-group">
-          <label for="inputComparativeDate">Comparative date</label>
-          <p class="input-group">
-  
-              <input type="text"
-                   cam-variable-name="comparativeDate"
-                   cam-variable-type="Date"
-                   class="form-control"
-                   datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
-                   is-open="dateFieldOpened" />
-            
-              <span class="input-group-btn">
-                <button type="button"
-                        class="btn btn-default"
-                        ng-click="open($event)">
-                  <i class="glyphicon glyphicon-calendar"></i>
-                </button>
-              </span>
-          </p>
-      </div>
-
-      <div class="form-group">
-          <label for="inputClosureOfAccounts">Closure of accounts</label>
-          <div class="controls">
-            <input class="form-control"
-                  required
-                  type="text"
-                  cam-variable-name="closureOfAccounts"
-                  cam-variable-type="String"
-                  placeholder="dd-MM-yyyy / eg. 01-01-2010"
-                  ng-minlength="2"
-                  ng-maxlength="20" />
-          </div>
-        </div>
-
-        <div class="form-group">
-            <label for="inputFreeText">Message</label>
-            <div class="controls">
-              <textarea class="form-control"
-                        cam-variable-name="freeText"
-                        cam-variable-type="String"
-                        rows="4"></textarea>
-            </div>
-        </div>
 
 </form>
