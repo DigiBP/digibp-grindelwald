@@ -20,27 +20,29 @@
         <bpmn:flowNodeRef>EndEvent_133jr12</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_120rogc</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_008cprz</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>SubProcess_16kmmha</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_01m9ukw</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>BoundaryEvent_04j514n</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>BoundaryEvent_0zme3l6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>BoundaryEvent_0bs3ozq</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SubProcess_16kmmha</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>BoundaryEvent_0zme3l6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_0u914yb</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_127xneu</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_1ncehdh</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1tufk81" name="Request Management">
         <bpmn:documentation>transformationErrorMsg</bpmn:documentation>
-        <bpmn:flowNodeRef>EndEvent_040dklh</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>StartEvent_14tnhon</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0oierkw</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0p5kqmn</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_08ory9o</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>SubProcess_0hlli6c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_0ixixr1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>SubProcess_0rt8urd</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_1or93f3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_040dklh</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>IntermediateThrowEvent_0lsh2z7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_14tnhon</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_08ory9o</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:dataStoreReference id="DataStoreReference_0noogq7" name="RMDB" />
-    <bpmn:endEvent id="EndEvent_040dklh" name="Request fulfilled">
-      <bpmn:incoming>SequenceFlow_0i3zzw7</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:subProcess id="Task_0oierkw" name="Cancel (ext)" triggeredByEvent="true">
       <bpmn:startEvent id="StartEvent_1e35jmb" name="Request cancellation received">
         <bpmn:outgoing>SequenceFlow_0vxqduz</bpmn:outgoing>
@@ -66,58 +68,12 @@
       <bpmn:task id="Task_1knz1ze" name="Cancel request">
         <bpmn:incoming>SequenceFlow_1ezkrpe</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_0g6b9gt</bpmn:outgoing>
-        <bpmn:dataOutputAssociation id="DataOutputAssociation_101ra4t">
-          <bpmn:targetRef>DataStoreReference_0noogq7</bpmn:targetRef>
-        </bpmn:dataOutputAssociation>
       </bpmn:task>
       <bpmn:association id="Association_13t7rsq" sourceRef="StartEvent_0nee7n1" targetRef="TextAnnotation_1n1z9hd" />
     </bpmn:subProcess>
-    <bpmn:subProcess id="Task_08ory9o" name="Close Request">
-      <bpmn:incoming>SequenceFlow_0ietuak</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0i3zzw7</bpmn:outgoing>
-      <bpmn:dataStoreReference id="DataStoreReference_0vqfimc" name="RMDB" />
-      <bpmn:sendTask id="Task_012xp0a" name="Send request fullfilment confirmation">
-        <bpmn:extensionElements>
-          <camunda:connector>
-            <camunda:inputOutput>
-              <camunda:inputParameter name="method">POST</camunda:inputParameter>
-              <camunda:inputParameter name="url">https://enwtdo8xb9uc.x.pipedream.net</camunda:inputParameter>
-              <camunda:inputParameter name="headers">
-                <camunda:map>
-                  <camunda:entry key="Content-Type">application/json</camunda:entry>
-                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
-                </camunda:map>
-              </camunda:inputParameter>
-              <camunda:inputParameter name="payload">
-                <camunda:script scriptFormat="javascript" resource="scripts/CamundaRequestFulfillmentMail.js" />
-              </camunda:inputParameter>
-            </camunda:inputOutput>
-            <camunda:connectorId>http-connector</camunda:connectorId>
-          </camunda:connector>
-        </bpmn:extensionElements>
-        <bpmn:incoming>SequenceFlow_0yph22j</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_1n9thcq</bpmn:outgoing>
-      </bpmn:sendTask>
-      <bpmn:sequenceFlow id="SequenceFlow_0yph22j" sourceRef="Task_0cd0qzb" targetRef="Task_012xp0a" />
-      <bpmn:endEvent id="EndEvent_1ye8fnu">
-        <bpmn:incoming>SequenceFlow_1n9thcq</bpmn:incoming>
-      </bpmn:endEvent>
-      <bpmn:sequenceFlow id="SequenceFlow_1n9thcq" sourceRef="Task_012xp0a" targetRef="EndEvent_1ye8fnu" />
-      <bpmn:startEvent id="StartEvent_1rpsm8z">
-        <bpmn:outgoing>SequenceFlow_0kvtero</bpmn:outgoing>
-      </bpmn:startEvent>
-      <bpmn:sequenceFlow id="SequenceFlow_0kvtero" sourceRef="StartEvent_1rpsm8z" targetRef="Task_0cd0qzb" />
-      <bpmn:task id="Task_0cd0qzb" name="Fulfil request">
-        <bpmn:incoming>SequenceFlow_0kvtero</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_0yph22j</bpmn:outgoing>
-        <bpmn:dataOutputAssociation id="DataOutputAssociation_0l27ko0">
-          <bpmn:targetRef>DataStoreReference_0vqfimc</bpmn:targetRef>
-        </bpmn:dataOutputAssociation>
-      </bpmn:task>
-    </bpmn:subProcess>
     <bpmn:sequenceFlow id="SequenceFlow_0ietuak" sourceRef="ExclusiveGateway_120rogc" targetRef="Task_08ory9o" />
-    <bpmn:sequenceFlow id="SequenceFlow_0i3zzw7" sourceRef="Task_08ory9o" targetRef="EndEvent_040dklh" />
-    <bpmn:sequenceFlow id="SequenceFlow_076rfu7" sourceRef="SubProcess_0rt8urd" targetRef="Task_008cprz" />
+    <bpmn:sequenceFlow id="SequenceFlow_0i3zzw7" sourceRef="Task_08ory9o" targetRef="IntermediateThrowEvent_0lsh2z7" />
+    <bpmn:sequenceFlow id="SequenceFlow_076rfu7" sourceRef="SubProcess_0rt8urd" targetRef="IntermediateThrowEvent_1or93f3" />
     <bpmn:endEvent id="EndEvent_126dfk7" name="Process termination">
       <bpmn:incoming>SequenceFlow_1097pye</bpmn:incoming>
       <bpmn:signalEventDefinition signalRef="Signal_1acs0wp" />
@@ -127,14 +83,13 @@
       <bpmn:signalEventDefinition signalRef="Signal_1acs0wp" />
     </bpmn:endEvent>
     <bpmn:exclusiveGateway id="ExclusiveGateway_120rogc" name="Review successful">
-      <bpmn:incoming>SequenceFlow_0agtfeu</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1eq2d78</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_12wo68k</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_1iqyv6a</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0ietuak</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:dataStoreReference id="DataStoreReference_0vmvza2" name="Storage solution" />
     <bpmn:subProcess id="Task_008cprz" name="Data Extraction">
-      <bpmn:incoming>SequenceFlow_076rfu7</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0bfnrtu</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1ai1wjk</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_08zylfy">
         <bpmn:targetRef>DataStoreReference_0vmvza2</bpmn:targetRef>
@@ -144,7 +99,7 @@
           <camunda:connector>
             <camunda:inputOutput>
               <camunda:inputParameter name="method">POST</camunda:inputParameter>
-              <camunda:inputParameter name="url">https://enwtdo8xb9uc.x.pipedream.net</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://enamnpi8uf6fi.x.pipedream.net</camunda:inputParameter>
               <camunda:inputParameter name="headers">
                 <camunda:map>
                   <camunda:entry key="Content-Type">application/json</camunda:entry>
@@ -181,6 +136,9 @@
       <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_0jbtgsi" name="Data uploaded&#10;">
         <bpmn:incoming>SequenceFlow_11sgowq</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_0sw4d36</bpmn:outgoing>
+        <bpmn:dataOutputAssociation id="DataOutputAssociation_10o89kx">
+          <bpmn:targetRef>DataStoreReference_1w07gje</bpmn:targetRef>
+        </bpmn:dataOutputAssociation>
         <bpmn:messageEventDefinition id="MessageEventDefinition_1a6it45" messageRef="Message_147y1gk" />
       </bpmn:intermediateCatchEvent>
       <bpmn:userTask id="UserTask_00d0xom" name="Validate data">
@@ -198,8 +156,8 @@
       </bpmn:userTask>
       <bpmn:exclusiveGateway id="ExclusiveGateway_11wffk3" name="is data valid?">
         <bpmn:incoming>SequenceFlow_0vim2ij</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_1cvzq08</bpmn:outgoing>
         <bpmn:outgoing>SequenceFlow_0k1eg97</bpmn:outgoing>
+        <bpmn:outgoing>SequenceFlow_1cvzq08</bpmn:outgoing>
       </bpmn:exclusiveGateway>
       <bpmn:endEvent id="EndEvent_1hntfxm">
         <bpmn:incoming>SequenceFlow_1cvzq08</bpmn:incoming>
@@ -212,29 +170,30 @@
       <bpmn:sequenceFlow id="SequenceFlow_11sgowq" sourceRef="EventBasedGateway_1p1dzg8" targetRef="IntermediateCatchEvent_0jbtgsi" />
       <bpmn:sequenceFlow id="SequenceFlow_0sw4d36" sourceRef="IntermediateCatchEvent_0jbtgsi" targetRef="UserTask_00d0xom" />
       <bpmn:sequenceFlow id="SequenceFlow_0vim2ij" sourceRef="UserTask_00d0xom" targetRef="ExclusiveGateway_11wffk3" />
-      <bpmn:sequenceFlow id="SequenceFlow_1cvzq08" sourceRef="ExclusiveGateway_11wffk3" targetRef="EndEvent_1hntfxm">
-        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${validData == "yes"}</bpmn:conditionExpression>
-      </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="SequenceFlow_0k1eg97" sourceRef="ExclusiveGateway_11wffk3" targetRef="SendTask_0vda52r">
         <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${validData == "no"}</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="SequenceFlow_0vjw24t" sourceRef="EventBasedGateway_1p1dzg8" targetRef="IntermediateCatchEvent_0uevxu6" />
       <bpmn:sequenceFlow id="SequenceFlow_0vkacb2" sourceRef="IntermediateCatchEvent_0uevxu6" targetRef="EndEvent_1ef1bi7" />
+      <bpmn:sequenceFlow id="SequenceFlow_1cvzq08" sourceRef="ExclusiveGateway_11wffk3" targetRef="EndEvent_1hntfxm">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${validData == "yes"}</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:dataStoreReference id="DataStoreReference_1w07gje" name="File-share" />
       <bpmn:textAnnotation id="TextAnnotation_0mif3pc">
         <bpmn:text>Reason for human intervention: quality ensurance</bpmn:text>
       </bpmn:textAnnotation>
       <bpmn:association id="Association_1y4w4zh" sourceRef="UserTask_00d0xom" targetRef="TextAnnotation_0mif3pc" />
     </bpmn:subProcess>
     <bpmn:subProcess id="SubProcess_16kmmha" name="Data transformation">
-      <bpmn:incoming>SequenceFlow_1iqyv6a</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1r2jtwu</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_1ai1wjk</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0jbykf8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_16xdget</bpmn:outgoing>
-      <bpmn:property id="Property_1sy71kt" name="__targetRef_placeholder" />
-      <bpmn:dataInputAssociation id="DataInputAssociation_1nqxael">
-        <bpmn:sourceRef>DataStoreReference_0vmvza2</bpmn:sourceRef>
-        <bpmn:targetRef>Property_1sy71kt</bpmn:targetRef>
-      </bpmn:dataInputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_14iosaj">
+        <bpmn:targetRef>DataStoreReference_0vmvza2</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1f4i8zc">
+        <bpmn:targetRef>DataStoreReference_1bezecn</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
       <bpmn:userTask id="Task_1uvq6qn" name="Transform Data">
         <bpmn:extensionElements>
           <camunda:formData>
@@ -281,9 +240,11 @@
       <bpmn:association id="Association_1aonjed" sourceRef="Task_1uvq6qn" targetRef="TextAnnotation_07wrycj" />
     </bpmn:subProcess>
     <bpmn:subProcess id="Task_01m9ukw" name="Datacube finalization ">
-      <bpmn:incoming>SequenceFlow_16xdget</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_12wo68k</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0wdkm76</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0agtfeu</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1h0ma5x">
+        <bpmn:targetRef>DataStoreReference_1bezecn</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
       <bpmn:exclusiveGateway id="ExclusiveGateway_17oppww" name="Missing information?">
         <bpmn:incoming>SequenceFlow_1hrse6z</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_1u45h3u</bpmn:outgoing>
@@ -328,7 +289,7 @@
           <camunda:connector>
             <camunda:inputOutput>
               <camunda:inputParameter name="method">POST</camunda:inputParameter>
-              <camunda:inputParameter name="url">https://enwtdo8xb9uc.x.pipedream.net</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://enamnpi8uf6fi.x.pipedream.net</camunda:inputParameter>
               <camunda:inputParameter name="headers">
                 <camunda:map>
                   <camunda:entry key="Content-Type">application/json</camunda:entry>
@@ -387,19 +348,6 @@
       </bpmn:eventBasedGateway>
       <bpmn:sequenceFlow id="SequenceFlow_0d7dr9s" sourceRef="ExclusiveGateway_1kpf7nl" targetRef="IntermediateThrowEvent_1wpb5ge" />
       <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_03tln4z" name="Metadata uploaded &#10;(Audit Team)">
-        <bpmn:extensionElements>
-          <camunda:executionListener class="ch.fhnw.digibp.rm.listener.DataUploadedListener" event="start">
-            <camunda:field name="uploaderType">
-              <camunda:string>Audit Team</camunda:string>
-            </camunda:field>
-            <camunda:field name="dataType">
-              <camunda:string>metadata</camunda:string>
-            </camunda:field>
-            <camunda:field name="newUpload">
-              <camunda:string>false</camunda:string>
-            </camunda:field>
-          </camunda:executionListener>
-        </bpmn:extensionElements>
         <bpmn:incoming>SequenceFlow_1tq74jd</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_1abmajh</bpmn:outgoing>
         <bpmn:messageEventDefinition messageRef="Message_147y1gk" />
@@ -447,36 +395,27 @@
       <bpmn:outgoing>SequenceFlow_1097pye</bpmn:outgoing>
       <bpmn:errorEventDefinition errorRef="Error_0e6cyck" />
     </bpmn:boundaryEvent>
-    <bpmn:boundaryEvent id="BoundaryEvent_0zme3l6" name="Transformation error" attachedToRef="SubProcess_16kmmha">
-      <bpmn:outgoing>SequenceFlow_1r2jtwu</bpmn:outgoing>
-      <bpmn:errorEventDefinition errorRef="Error_0l6c8ui" />
-    </bpmn:boundaryEvent>
     <bpmn:boundaryEvent id="BoundaryEvent_0bs3ozq" name="Data delivery error" attachedToRef="Task_008cprz">
       <bpmn:outgoing>SequenceFlow_1dkn1b2</bpmn:outgoing>
       <bpmn:errorEventDefinition errorRef="Error_1tvhamc" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1097pye" sourceRef="BoundaryEvent_04j514n" targetRef="EndEvent_126dfk7" />
     <bpmn:sequenceFlow id="SequenceFlow_1dkn1b2" sourceRef="BoundaryEvent_0bs3ozq" targetRef="EndEvent_133jr12" />
-    <bpmn:sequenceFlow id="SequenceFlow_0agtfeu" sourceRef="Task_01m9ukw" targetRef="ExclusiveGateway_120rogc" />
-    <bpmn:sequenceFlow id="SequenceFlow_1iqyv6a" name="Invalid data" sourceRef="ExclusiveGateway_120rogc" targetRef="SubProcess_16kmmha">
+    <bpmn:sequenceFlow id="SequenceFlow_0agtfeu" sourceRef="Task_01m9ukw" targetRef="IntermediateThrowEvent_127xneu" />
+    <bpmn:sequenceFlow id="SequenceFlow_1iqyv6a" name="Invalid data" sourceRef="ExclusiveGateway_120rogc" targetRef="IntermediateThrowEvent_0u914yb">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${reviewResult == "invalidData"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_12wo68k" name="Invalid metadata" sourceRef="ExclusiveGateway_120rogc" targetRef="Task_01m9ukw">
+    <bpmn:sequenceFlow id="SequenceFlow_12wo68k" name="Invalid metadata" sourceRef="ExclusiveGateway_120rogc" targetRef="IntermediateThrowEvent_1ncehdh">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${reviewResult == "invalidMetadata"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_1ai1wjk" sourceRef="Task_008cprz" targetRef="SubProcess_16kmmha" />
+    <bpmn:sequenceFlow id="SequenceFlow_1ai1wjk" sourceRef="Task_008cprz" targetRef="IntermediateThrowEvent_0u914yb" />
     <bpmn:sequenceFlow id="SequenceFlow_1r2jtwu" sourceRef="BoundaryEvent_0zme3l6" targetRef="SubProcess_16kmmha" />
-    <bpmn:sequenceFlow id="SequenceFlow_16xdget" sourceRef="SubProcess_16kmmha" targetRef="Task_01m9ukw" />
-    <bpmn:startEvent id="StartEvent_14tnhon" name="Request received">
-      <bpmn:outgoing>SequenceFlow_0dc9em6</bpmn:outgoing>
-      <bpmn:messageEventDefinition messageRef="Message_0cops97" />
-    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_16xdget" sourceRef="SubProcess_16kmmha" targetRef="IntermediateThrowEvent_1ncehdh" />
     <bpmn:subProcess id="SubProcess_0hlli6c" name="Open Request">
       <bpmn:incoming>SequenceFlow_0dc9em6</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0xasplb</bpmn:outgoing>
-      <bpmn:dataStoreReference id="DataStoreReference_0k14rwy" name="RMDB" />
       <bpmn:endEvent id="EndEvent_15pp3nx">
-        <bpmn:incoming>SequenceFlow_1fbjb5m</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_10wij9x</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:startEvent id="StartEvent_11eg8xk">
         <bpmn:outgoing>SequenceFlow_1608paw</bpmn:outgoing>
@@ -488,7 +427,7 @@
           <camunda:connector>
             <camunda:inputOutput>
               <camunda:inputParameter name="method">POST</camunda:inputParameter>
-              <camunda:inputParameter name="url">https://enwtdo8xb9uc.x.pipedream.net</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://enamnpi8uf6fi.x.pipedream.net</camunda:inputParameter>
               <camunda:inputParameter name="headers">
                 <camunda:map>
                   <camunda:entry key="Content-Type">application/json</camunda:entry>
@@ -503,9 +442,8 @@
           </camunda:connector>
         </bpmn:extensionElements>
         <bpmn:incoming>SequenceFlow_1jux0xz</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_1fbjb5m</bpmn:outgoing>
+        <bpmn:outgoing>SequenceFlow_10wij9x</bpmn:outgoing>
       </bpmn:sendTask>
-      <bpmn:sequenceFlow id="SequenceFlow_1fbjb5m" sourceRef="Task_0uqauo9" targetRef="EndEvent_15pp3nx" />
       <bpmn:serviceTask id="Task_122g3b3" name="Open request">
         <bpmn:extensionElements>
           <camunda:connector>
@@ -543,13 +481,44 @@
         </bpmn:extensionElements>
         <bpmn:incoming>SequenceFlow_1608paw</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_1jux0xz</bpmn:outgoing>
-        <bpmn:dataOutputAssociation id="DataOutputAssociation_12mwknj">
-          <bpmn:targetRef>DataStoreReference_0k14rwy</bpmn:targetRef>
-        </bpmn:dataOutputAssociation>
       </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="SequenceFlow_10wij9x" sourceRef="Task_0uqauo9" targetRef="EndEvent_15pp3nx" />
     </bpmn:subProcess>
-    <bpmn:subProcess id="SubProcess_0rt8urd" name="Preparation">
+    <bpmn:sequenceFlow id="SequenceFlow_0dc9em6" sourceRef="StartEvent_14tnhon" targetRef="SubProcess_0hlli6c" />
+    <bpmn:sequenceFlow id="SequenceFlow_0xasplb" sourceRef="SubProcess_0hlli6c" targetRef="IntermediateThrowEvent_0ixixr1" />
+    <bpmn:boundaryEvent id="BoundaryEvent_0zme3l6" name="Transformation error" attachedToRef="SubProcess_16kmmha">
+      <bpmn:outgoing>SequenceFlow_1r2jtwu</bpmn:outgoing>
+      <bpmn:errorEventDefinition errorRef="Error_0l6c8ui" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0hshk24" sourceRef="IntermediateThrowEvent_0ixixr1" targetRef="SubProcess_0rt8urd" />
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0ixixr1" name="Update&#10;status">
       <bpmn:incoming>SequenceFlow_0xasplb</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0hshk24</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="Message_0cdtv97">
+        <bpmn:extensionElements>
+          <camunda:connector>
+            <camunda:inputOutput>
+              <camunda:inputParameter name="method">POST</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://hook.integromat.com/phxd3eepyetckunbowpf7ps9a3y4hk76</camunda:inputParameter>
+              <camunda:inputParameter name="headers">
+                <camunda:map>
+                  <camunda:entry key="Content-Type">application/json</camunda:entry>
+                </camunda:map>
+              </camunda:inputParameter>
+              <camunda:inputParameter name="payload">
+                <camunda:script scriptFormat="javascript">out = JSON.stringify({
+                    "requestID":requestID,
+                    "status":"RECEIVED"
+                });</camunda:script>
+              </camunda:inputParameter>
+            </camunda:inputOutput>
+            <camunda:connectorId>http-connector</camunda:connectorId>
+          </camunda:connector>
+        </bpmn:extensionElements>
+      </bpmn:messageEventDefinition>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:subProcess id="SubProcess_0rt8urd" name="Preparation">
+      <bpmn:incoming>SequenceFlow_0hshk24</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_076rfu7</bpmn:outgoing>
       <bpmn:startEvent id="StartEvent_09qhtsw">
         <bpmn:outgoing>SequenceFlow_05oxnv9</bpmn:outgoing>
@@ -560,7 +529,6 @@
       <bpmn:endEvent id="EndEvent_132af6z">
         <bpmn:incoming>SequenceFlow_1fg1k88</bpmn:incoming>
       </bpmn:endEvent>
-      <bpmn:sequenceFlow id="SequenceFlow_1fg1k88" sourceRef="Task_12bm9lg" targetRef="EndEvent_132af6z" />
       <bpmn:serviceTask id="Task_1istru1" name="Prepare data extraction">
         <bpmn:extensionElements>
           <camunda:connector>
@@ -675,8 +643,8 @@
           <bpmn:targetRef>DataStoreReference_0bfzun7</bpmn:targetRef>
         </bpmn:dataOutputAssociation>
       </bpmn:serviceTask>
-      <bpmn:dataStoreReference id="DataStoreReference_1inf5wz" name="File share" />
-      <bpmn:dataStoreReference id="DataStoreReference_0bfzun7" name="Team share" />
+      <bpmn:dataStoreReference id="DataStoreReference_1inf5wz" name="File-share" />
+      <bpmn:dataStoreReference id="DataStoreReference_0bfzun7" name="Team-share" />
       <bpmn:serviceTask id="ServiceTask_0fhfik4" name="Prepare data transformation">
         <bpmn:extensionElements>
           <camunda:connector>
@@ -713,9 +681,193 @@
         </bpmn:dataOutputAssociation>
       </bpmn:serviceTask>
       <bpmn:sequenceFlow id="SequenceFlow_08cd70h" sourceRef="ServiceTask_0fhfik4" targetRef="Task_1s7mngu" />
+      <bpmn:sequenceFlow id="SequenceFlow_1fg1k88" sourceRef="Task_12bm9lg" targetRef="EndEvent_132af6z" />
     </bpmn:subProcess>
-    <bpmn:sequenceFlow id="SequenceFlow_0dc9em6" sourceRef="StartEvent_14tnhon" targetRef="SubProcess_0hlli6c" />
-    <bpmn:sequenceFlow id="SequenceFlow_0xasplb" sourceRef="SubProcess_0hlli6c" targetRef="SubProcess_0rt8urd" />
+    <bpmn:sequenceFlow id="SequenceFlow_0bfnrtu" sourceRef="IntermediateThrowEvent_1or93f3" targetRef="Task_008cprz" />
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_1or93f3" name="Update&#10;status">
+      <bpmn:incoming>SequenceFlow_076rfu7</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0bfnrtu</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0l3jks1">
+        <bpmn:extensionElements>
+          <camunda:connector>
+            <camunda:inputOutput>
+              <camunda:inputParameter name="method">POST</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://hook.integromat.com/phxd3eepyetckunbowpf7ps9a3y4hk76</camunda:inputParameter>
+              <camunda:inputParameter name="headers">
+                <camunda:map>
+                  <camunda:entry key="Content-Type">application/json</camunda:entry>
+                </camunda:map>
+              </camunda:inputParameter>
+              <camunda:inputParameter name="payload">
+                <camunda:script scriptFormat="javascript">out = JSON.stringify({
+                    "requestID":requestID,
+                    "status":"PREPARED"
+                });</camunda:script>
+              </camunda:inputParameter>
+            </camunda:inputOutput>
+            <camunda:connectorId>http-connector</camunda:connectorId>
+          </camunda:connector>
+        </bpmn:extensionElements>
+      </bpmn:messageEventDefinition>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0u914yb" name="Update&#10;status">
+      <bpmn:incoming>SequenceFlow_1ai1wjk</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1iqyv6a</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0jbykf8</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_03znvaw">
+        <bpmn:extensionElements>
+          <camunda:connector>
+            <camunda:inputOutput>
+              <camunda:inputParameter name="method">POST</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://hook.integromat.com/phxd3eepyetckunbowpf7ps9a3y4hk76</camunda:inputParameter>
+              <camunda:inputParameter name="headers">
+                <camunda:map>
+                  <camunda:entry key="Content-Type">application/json</camunda:entry>
+                </camunda:map>
+              </camunda:inputParameter>
+              <camunda:inputParameter name="payload">
+                <camunda:script scriptFormat="javascript">out = JSON.stringify({
+                    "requestID":requestID,
+                    "status":"EXTRACTED"
+                });</camunda:script>
+              </camunda:inputParameter>
+            </camunda:inputOutput>
+            <camunda:connectorId>http-connector</camunda:connectorId>
+          </camunda:connector>
+        </bpmn:extensionElements>
+      </bpmn:messageEventDefinition>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0jbykf8" sourceRef="IntermediateThrowEvent_0u914yb" targetRef="SubProcess_16kmmha" />
+    <bpmn:sequenceFlow id="SequenceFlow_0wdkm76" sourceRef="IntermediateThrowEvent_1ncehdh" targetRef="Task_01m9ukw" />
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_127xneu" name="Update&#10;status">
+      <bpmn:incoming>SequenceFlow_0agtfeu</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1eq2d78</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0n7oz5v">
+        <bpmn:extensionElements>
+          <camunda:connector>
+            <camunda:inputOutput>
+              <camunda:inputParameter name="method">POST</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://hook.integromat.com/phxd3eepyetckunbowpf7ps9a3y4hk76</camunda:inputParameter>
+              <camunda:inputParameter name="headers">
+                <camunda:map>
+                  <camunda:entry key="Content-Type">application/json</camunda:entry>
+                </camunda:map>
+              </camunda:inputParameter>
+              <camunda:inputParameter name="payload">
+                <camunda:script scriptFormat="javascript">out = JSON.stringify({
+                    "requestID":requestID,
+                    "status":"FINALIZED"
+                });</camunda:script>
+              </camunda:inputParameter>
+            </camunda:inputOutput>
+            <camunda:connectorId>http-connector</camunda:connectorId>
+          </camunda:connector>
+        </bpmn:extensionElements>
+      </bpmn:messageEventDefinition>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1eq2d78" sourceRef="IntermediateThrowEvent_127xneu" targetRef="ExclusiveGateway_120rogc" />
+    <bpmn:endEvent id="EndEvent_040dklh" name="Request fulfilled">
+      <bpmn:incoming>SequenceFlow_1c71t1g</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0lsh2z7" name="Update&#10;status">
+      <bpmn:incoming>SequenceFlow_0i3zzw7</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1c71t1g</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0h0jmec">
+        <bpmn:extensionElements>
+          <camunda:connector>
+            <camunda:inputOutput>
+              <camunda:inputParameter name="method">POST</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://hook.integromat.com/phxd3eepyetckunbowpf7ps9a3y4hk76</camunda:inputParameter>
+              <camunda:inputParameter name="headers">
+                <camunda:map>
+                  <camunda:entry key="Content-Type">application/json</camunda:entry>
+                </camunda:map>
+              </camunda:inputParameter>
+              <camunda:inputParameter name="payload">
+                <camunda:script scriptFormat="javascript">out = JSON.stringify({
+                    "requestID":requestID,
+                    "status":"FULFILLED"
+                });</camunda:script>
+              </camunda:inputParameter>
+            </camunda:inputOutput>
+            <camunda:connectorId>http-connector</camunda:connectorId>
+          </camunda:connector>
+        </bpmn:extensionElements>
+      </bpmn:messageEventDefinition>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1c71t1g" sourceRef="IntermediateThrowEvent_0lsh2z7" targetRef="EndEvent_040dklh" />
+    <bpmn:dataStoreReference id="DataStoreReference_0vmvza2" name="Team-share" />
+    <bpmn:startEvent id="StartEvent_14tnhon" name="Request received" camunda:formKey="CamundaStartForm.html">
+      <bpmn:outgoing>SequenceFlow_0dc9em6</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="Message_0cops97" />
+    </bpmn:startEvent>
+    <bpmn:subProcess id="Task_08ory9o" name="Close Request">
+      <bpmn:incoming>SequenceFlow_0ietuak</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0i3zzw7</bpmn:outgoing>
+      <bpmn:sendTask id="Task_012xp0a" name="Send request fullfilment confirmation">
+        <bpmn:extensionElements>
+          <camunda:connector>
+            <camunda:inputOutput>
+              <camunda:inputParameter name="method">POST</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://enamnpi8uf6fi.x.pipedream.net</camunda:inputParameter>
+              <camunda:inputParameter name="headers">
+                <camunda:map>
+                  <camunda:entry key="Content-Type">application/json</camunda:entry>
+                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
+                </camunda:map>
+              </camunda:inputParameter>
+              <camunda:inputParameter name="payload">
+                <camunda:script scriptFormat="javascript" resource="scripts/CamundaRequestFulfillmentMail.js" />
+              </camunda:inputParameter>
+            </camunda:inputOutput>
+            <camunda:connectorId>http-connector</camunda:connectorId>
+          </camunda:connector>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_0yph22j</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1n9thcq</bpmn:outgoing>
+      </bpmn:sendTask>
+      <bpmn:sequenceFlow id="SequenceFlow_0yph22j" sourceRef="Task_0cd0qzb" targetRef="Task_012xp0a" />
+      <bpmn:endEvent id="EndEvent_1ye8fnu">
+        <bpmn:incoming>SequenceFlow_1n9thcq</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_1n9thcq" sourceRef="Task_012xp0a" targetRef="EndEvent_1ye8fnu" />
+      <bpmn:startEvent id="StartEvent_1rpsm8z">
+        <bpmn:outgoing>SequenceFlow_0kvtero</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_0kvtero" sourceRef="StartEvent_1rpsm8z" targetRef="Task_0cd0qzb" />
+      <bpmn:task id="Task_0cd0qzb" name="Fulfil request">
+        <bpmn:incoming>SequenceFlow_0kvtero</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0yph22j</bpmn:outgoing>
+      </bpmn:task>
+    </bpmn:subProcess>
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_1ncehdh" name="Update&#10;status">
+      <bpmn:incoming>SequenceFlow_16xdget</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_12wo68k</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0wdkm76</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_177mo5w">
+        <bpmn:extensionElements>
+          <camunda:connector>
+            <camunda:inputOutput>
+              <camunda:inputParameter name="method">POST</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://hook.integromat.com/phxd3eepyetckunbowpf7ps9a3y4hk76</camunda:inputParameter>
+              <camunda:inputParameter name="headers">
+                <camunda:map>
+                  <camunda:entry key="Content-Type">application/json</camunda:entry>
+                </camunda:map>
+              </camunda:inputParameter>
+              <camunda:inputParameter name="payload">
+                <camunda:script scriptFormat="javascript">out = JSON.stringify({
+                    "requestID":requestID,
+                    "status":"TRANSFORMED"
+                });</camunda:script>
+              </camunda:inputParameter>
+            </camunda:inputOutput>
+            <camunda:connectorId>http-connector</camunda:connectorId>
+          </camunda:connector>
+        </bpmn:extensionElements>
+      </bpmn:messageEventDefinition>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:dataStoreReference id="DataStoreReference_1bezecn" name="Team-share" />
     <bpmn:textAnnotation id="TextAnnotation_1n1z9hd">
       <bpmn:text>Internal termination</bpmn:text>
     </bpmn:textAnnotation>
@@ -735,6 +887,7 @@
   <bpmn:message id="Message_0dffzyv" name="metadataRecievedMsg" />
   <bpmn:message id="Message_0eb420b" name="invalidRequestMsg" />
   <bpmn:message id="Message_1vc03ea" name="adjustedRequestMsg" />
+  <bpmn:message id="Message_0cdtv97" name="statusUpdateMessage" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_07vxun3">
       <bpmndi:BPMNShape id="Participant_1x7g98v_di" bpmnElement="Participant_1x7g98v" isHorizontal="true">
@@ -852,31 +1005,27 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="StartEvent_19i4vvg_di" bpmnElement="StartEvent_14tnhon">
-        <dc:Bounds x="274" y="417" width="36" height="36" />
+        <dc:Bounds x="274" y="414" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="251" y="460" width="86" height="14" />
+          <dc:Bounds x="251" y="457" width="86" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="MessageFlow_1jc6mw5_di" bpmnElement="MessageFlow_1jc6mw5">
         <di:waypoint x="292" y="227" />
-        <di:waypoint x="292" y="417" />
+        <di:waypoint x="292" y="414" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_04y9cqm_di" bpmnElement="Participant_0fihisn" isHorizontal="true">
         <dc:Bounds x="193" y="92" width="4275" height="135" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_0vmvza2_di" bpmnElement="DataStoreReference_0vmvza2">
-        <dc:Bounds x="1836" y="1467" width="50" height="50" />
+        <dc:Bounds x="1826" y="1010" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1821" y="1527" width="80" height="14" />
+          <dc:Bounds x="1823" y="1070" width="59" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="DataInputAssociation_1nqxael_di" bpmnElement="DataInputAssociation_1nqxael">
-        <di:waypoint x="1884" y="1467" />
-        <di:waypoint x="1934" y="1409" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_08zylfy_di" bpmnElement="DataOutputAssociation_08zylfy">
-        <di:waypoint x="1767" y="1405" />
-        <di:waypoint x="1836" y="1469" />
+        <di:waypoint x="1770" y="1033" />
+        <di:waypoint x="1826" y="1034" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="BoundaryEvent_0k1tv23_di" bpmnElement="BoundaryEvent_0bs3ozq">
         <dc:Bounds x="1752" y="915" width="36" height="36" />
@@ -888,8 +1037,8 @@
         <dc:Bounds x="2743" y="898" width="1109" height="510" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_16xdget_di" bpmnElement="SequenceFlow_16xdget">
-        <di:waypoint x="2561" y="1203" />
-        <di:waypoint x="2743" y="1203" />
+        <di:waypoint x="2561" y="1153" />
+        <di:waypoint x="2636" y="1153" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="StartEvent_104zecu_di" bpmnElement="StartEvent_104zecu">
         <dc:Bounds x="2762" y="1184" width="36" height="36" />
@@ -935,8 +1084,8 @@
       <bpmndi:BPMNEdge id="SequenceFlow_12wo68k_di" bpmnElement="SequenceFlow_12wo68k">
         <di:waypoint x="4048" y="1228" />
         <di:waypoint x="4048" y="1492" />
-        <di:waypoint x="3298" y="1504" />
-        <di:waypoint x="3298" y="1408" />
+        <di:waypoint x="2654" y="1492" />
+        <di:waypoint x="2654" y="1171" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="3951" y="1363" width="81" height="14" />
         </bpmndi:BPMNLabel>
@@ -945,15 +1094,15 @@
         <di:waypoint x="4073" y="1203" />
         <di:waypoint x="4148" y="1203" />
         <di:waypoint x="4148" y="1534" />
-        <di:waypoint x="2247" y="1548" />
-        <di:waypoint x="2247" y="1413" />
+        <di:waypoint x="1845" y="1534" />
+        <di:waypoint x="1845" y="1171" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="4085" y="1361" width="57" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_0rejkri_di" bpmnElement="MessageFlow_0rejkri">
-        <di:waypoint x="4139" y="356" />
-        <di:waypoint x="4139" y="227" />
+        <di:waypoint x="4137" y="389" />
+        <di:waypoint x="4137" y="227" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1097pye_di" bpmnElement="SequenceFlow_1097pye">
         <di:waypoint x="3870" y="932" />
@@ -967,18 +1116,8 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0yph22j_di" bpmnElement="SequenceFlow_0yph22j">
-        <di:waypoint x="4046" y="396" />
-        <di:waypoint x="4089" y="396" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="DataStoreReference_0vqfimc_di" bpmnElement="DataStoreReference_0vqfimc">
-        <dc:Bounds x="3971" y="494" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="3979" y="554" width="33" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_0l27ko0_di" bpmnElement="DataOutputAssociation_0l27ko0">
-        <di:waypoint x="3996" y="436" />
-        <di:waypoint x="3996" y="494" />
+        <di:waypoint x="4044" y="429" />
+        <di:waypoint x="4087" y="429" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0g47riq_di" bpmnElement="SequenceFlow_0g47riq">
         <di:waypoint x="3214" y="1092" />
@@ -1036,16 +1175,6 @@
           <dc:Bounds x="2677" y="393" width="20" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_0noogq7_di" bpmnElement="DataStoreReference_0noogq7">
-        <dc:Bounds x="2563" y="450" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="2571" y="518" width="33" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_101ra4t_di" bpmnElement="DataOutputAssociation_101ra4t">
-        <di:waypoint x="2588" y="408" />
-        <di:waypoint x="2587" y="450" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="SubProcess_047x6je_di" bpmnElement="Task_0oierkw" isExpanded="true">
         <dc:Bounds x="2143" y="284" width="228" height="120" />
       </bpmndi:BPMNShape>
@@ -1060,18 +1189,18 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SendTask_1pu5bot_di" bpmnElement="Task_0uqauo9">
-        <dc:Bounds x="644" y="348" width="100" height="80" />
+        <dc:Bounds x="621" y="391" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SendTask_0qmuuzv_di" bpmnElement="Task_0b7gnh7" bioc:stroke="black" bioc:fill="white">
         <dc:Bounds x="3114" y="1052" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SendTask_1mvwk2s_di" bpmnElement="Task_012xp0a">
-        <dc:Bounds x="4089" y="356" width="100" height="80" />
+        <dc:Bounds x="4087" y="389" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_0jyfea0_di" bpmnElement="EndEvent_040dklh">
-        <dc:Bounds x="4360" y="405" width="36" height="36" />
+        <dc:Bounds x="4393" y="405" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="4340" y="448" width="79" height="14" />
+          <dc:Bounds x="4373" y="448" width="79" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_19bldiu_di" bpmnElement="TextAnnotation_19bldiu">
@@ -1090,7 +1219,7 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0agtfeu_di" bpmnElement="SequenceFlow_0agtfeu">
         <di:waypoint x="3852" y="1203" />
-        <di:waypoint x="4023" y="1203" />
+        <di:waypoint x="3923" y="1203" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1fwerb1_di" bpmnElement="SequenceFlow_1fwerb1">
         <di:waypoint x="3715" y="1202" />
@@ -1131,29 +1260,29 @@
         <di:waypoint x="3396" y="1092" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="SubProcess_0opk7if_di" bpmnElement="Task_08ory9o" isExpanded="true" bioc:stroke="black" bioc:fill="white">
-        <dc:Bounds x="3808" y="303" width="480" height="279" />
+        <dc:Bounds x="3840" y="336" width="446" height="173" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_1ye8fnu_di" bpmnElement="EndEvent_1ye8fnu">
-        <dc:Bounds x="4232" y="378" width="36" height="36" />
+        <dc:Bounds x="4230" y="411" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1n9thcq_di" bpmnElement="SequenceFlow_1n9thcq">
-        <di:waypoint x="4189" y="396" />
-        <di:waypoint x="4232" y="396" />
+        <di:waypoint x="4187" y="429" />
+        <di:waypoint x="4230" y="429" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="StartEvent_1rpsm8z_di" bpmnElement="StartEvent_1rpsm8z">
-        <dc:Bounds x="3842" y="378" width="36" height="36" />
+        <dc:Bounds x="3860" y="411" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0kvtero_di" bpmnElement="SequenceFlow_0kvtero">
-        <di:waypoint x="3878" y="396" />
-        <di:waypoint x="3946" y="396" />
+        <di:waypoint x="3896" y="429" />
+        <di:waypoint x="3944" y="429" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0i3zzw7_di" bpmnElement="SequenceFlow_0i3zzw7">
-        <di:waypoint x="4288" y="423" />
-        <di:waypoint x="4360" y="423" />
+        <di:waypoint x="4286" y="423" />
+        <di:waypoint x="4321" y="423" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0ietuak_di" bpmnElement="SequenceFlow_0ietuak">
         <di:waypoint x="4048" y="1178" />
-        <di:waypoint x="4048" y="582" />
+        <di:waypoint x="4048" y="509" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_0dc8a4z_di" bpmnElement="Task_0tre7ry" bioc:stroke="black" bioc:fill="white">
         <dc:Bounds x="3482" y="1052" width="100" height="80" />
@@ -1209,7 +1338,7 @@
         <di:waypoint x="3632" y="1092" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Task_1k8mjjm_di" bpmnElement="Task_0cd0qzb" bioc:stroke="black" bioc:fill="white">
-        <dc:Bounds x="3946" y="356" width="100" height="80" />
+        <dc:Bounds x="3944" y="389" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_0vyu7cu_di" bpmnElement="Participant_0vyu7cu" isHorizontal="true">
         <dc:Bounds x="194" y="1615" width="4277" height="140" />
@@ -1224,7 +1353,7 @@
         <dc:Bounds x="1402" y="1111" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_1hntfxm_di" bpmnElement="EndEvent_1hntfxm">
-        <dc:Bounds x="1670" y="1133" width="36" height="36" />
+        <dc:Bounds x="1709" y="1133" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SendTask_0vda52r_di" bpmnElement="SendTask_0vda52r" bioc:stroke="black" bioc:fill="white">
         <dc:Bounds x="1047" y="1111" width="100" height="80" />
@@ -1287,10 +1416,6 @@
         <di:waypoint x="1502" y="1151" />
         <di:waypoint x="1561" y="1151" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_1cvzq08_di" bpmnElement="SequenceFlow_1cvzq08">
-        <di:waypoint x="1611" y="1151" />
-        <di:waypoint x="1670" y="1151" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0k1eg97_di" bpmnElement="SequenceFlow_0k1eg97">
         <di:waypoint x="1586" y="1126" />
         <di:waypoint x="1586" y="934" />
@@ -1311,129 +1436,111 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1ai1wjk_di" bpmnElement="SequenceFlow_1ai1wjk">
         <di:waypoint x="1770" y="1153" />
-        <di:waypoint x="1932" y="1153" />
+        <di:waypoint x="1827" y="1153" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Task_0hp1axb_di" bpmnElement="Task_1knz1ze" bioc:stroke="black" bioc:fill="white">
         <dc:Bounds x="2538" y="328" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SubProcess_0hlli6c_di" bpmnElement="SubProcess_0hlli6c" isExpanded="true" bioc:stroke="black" bioc:fill="white">
-        <dc:Bounds x="374" y="295" width="480" height="279" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_0k14rwy_di" bpmnElement="DataStoreReference_0k14rwy">
-        <dc:Bounds x="537" y="486" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="545" y="546" width="33" height="14" />
-        </bpmndi:BPMNLabel>
+        <dc:Bounds x="374" y="295" width="433" height="274" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_15pp3nx_di" bpmnElement="EndEvent_15pp3nx">
-        <dc:Bounds x="798" y="370" width="36" height="36" />
+        <dc:Bounds x="751" y="413" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_11eg8xk_di" bpmnElement="StartEvent_11eg8xk">
-        <dc:Bounds x="408" y="370" width="36" height="36" />
+        <dc:Bounds x="408" y="413" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1608paw_di" bpmnElement="SequenceFlow_1608paw">
-        <di:waypoint x="444" y="388" />
-        <di:waypoint x="512" y="388" />
+        <di:waypoint x="444" y="431" />
+        <di:waypoint x="469" y="431" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1jux0xz_di" bpmnElement="SequenceFlow_1jux0xz">
-        <di:waypoint x="612" y="388" />
-        <di:waypoint x="644" y="388" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_12mwknj_di" bpmnElement="DataOutputAssociation_12mwknj">
-        <di:waypoint x="562" y="428" />
-        <di:waypoint x="562" y="486" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_1fbjb5m_di" bpmnElement="SequenceFlow_1fbjb5m">
-        <di:waypoint x="744" y="388" />
-        <di:waypoint x="798" y="388" />
+        <di:waypoint x="569" y="431" />
+        <di:waypoint x="621" y="431" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0dc9em6_di" bpmnElement="SequenceFlow_0dc9em6">
-        <di:waypoint x="310" y="435" />
-        <di:waypoint x="374" y="435" />
+        <di:waypoint x="310" y="432" />
+        <di:waypoint x="374" y="432" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0xasplb_di" bpmnElement="SequenceFlow_0xasplb">
-        <di:waypoint x="854" y="435" />
-        <di:waypoint x="919" y="435" />
+        <di:waypoint x="807" y="432" />
+        <di:waypoint x="845" y="432" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_14ncrse_di" bpmnElement="MessageFlow_14ncrse">
-        <di:waypoint x="694" y="348" />
-        <di:waypoint x="694" y="227" />
+        <di:waypoint x="671" y="391" />
+        <di:waypoint x="671" y="227" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_0cp3p6t_di" bpmnElement="Task_122g3b3" bioc:stroke="black" bioc:fill="white">
-        <dc:Bounds x="512" y="348" width="100" height="80" />
+        <dc:Bounds x="469" y="391" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SubProcess_0rt8urd_di" bpmnElement="SubProcess_0rt8urd" isExpanded="true">
-        <dc:Bounds x="919" y="291" width="655" height="287" />
+        <dc:Bounds x="919" y="288" width="668" height="286" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_076rfu7_di" bpmnElement="SequenceFlow_076rfu7">
-        <di:waypoint x="1276" y="578" />
-        <di:waypoint x="1276" y="897" />
+        <di:waypoint x="1282" y="574" />
+        <di:waypoint x="1282" y="647" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="StartEvent_09qhtsw_di" bpmnElement="StartEvent_09qhtsw">
-        <dc:Bounds x="943" y="372" width="36" height="36" />
+        <dc:Bounds x="943" y="370" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_05oxnv9_di" bpmnElement="SequenceFlow_05oxnv9">
-        <di:waypoint x="979" y="390" />
-        <di:waypoint x="1002" y="390" />
+        <di:waypoint x="979" y="388" />
+        <di:waypoint x="1002" y="388" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_193nc3x_di" bpmnElement="SequenceFlow_193nc3x">
-        <di:waypoint x="1102" y="390" />
-        <di:waypoint x="1127" y="390" />
+        <di:waypoint x="1102" y="388" />
+        <di:waypoint x="1127" y="388" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0z53bce_di" bpmnElement="SequenceFlow_0z53bce">
-        <di:waypoint x="1355" y="390" />
-        <di:waypoint x="1383" y="390" />
+        <di:waypoint x="1355" y="388" />
+        <di:waypoint x="1383" y="388" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_132af6z_di" bpmnElement="EndEvent_132af6z">
-        <dc:Bounds x="1518" y="372" width="36" height="36" />
+        <dc:Bounds x="1531" y="370" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1fg1k88_di" bpmnElement="SequenceFlow_1fg1k88">
-        <di:waypoint x="1483" y="390" />
-        <di:waypoint x="1518" y="390" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_09bfnob_di" bpmnElement="Task_1istru1">
-        <dc:Bounds x="1002" y="350" width="100" height="80" />
+        <dc:Bounds x="1002" y="348" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1plnke1_di" bpmnElement="Task_1s7mngu">
-        <dc:Bounds x="1255" y="350" width="100" height="80" />
+        <dc:Bounds x="1255" y="348" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1plgm4u_di" bpmnElement="Task_12bm9lg">
-        <dc:Bounds x="1383" y="350" width="100" height="80" />
+        <dc:Bounds x="1383" y="348" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1inf5wz_di" bpmnElement="DataStoreReference_1inf5wz">
-        <dc:Bounds x="1027" y="461" width="50" height="50" />
+        <dc:Bounds x="1027" y="459" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1028" y="518" width="49" height="14" />
+          <dc:Bounds x="1028" y="516" width="49" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DataOutputAssociation_081dx57_di" bpmnElement="DataOutputAssociation_081dx57">
-        <di:waypoint x="1052" y="430" />
-        <di:waypoint x="1052" y="461" />
+        <di:waypoint x="1052" y="428" />
+        <di:waypoint x="1052" y="459" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="DataStoreReference_0bfzun7_di" bpmnElement="DataStoreReference_0bfzun7">
-        <dc:Bounds x="1280" y="461" width="50" height="50" />
+        <dc:Bounds x="1280" y="459" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1276" y="518" width="58" height="14" />
+          <dc:Bounds x="1276" y="516" width="59" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DataOutputAssociation_1ruohrl_di" bpmnElement="DataOutputAssociation_1ruohrl">
-        <di:waypoint x="1305" y="430" />
-        <di:waypoint x="1305" y="461" />
+        <di:waypoint x="1305" y="428" />
+        <di:waypoint x="1305" y="459" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_02qh7ie_di" bpmnElement="DataOutputAssociation_02qh7ie">
-        <di:waypoint x="1385" y="426" />
-        <di:waypoint x="1330" y="467" />
+        <di:waypoint x="1385" y="424" />
+        <di:waypoint x="1330" y="465" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_0fhfik4_di" bpmnElement="ServiceTask_0fhfik4">
-        <dc:Bounds x="1127" y="350" width="100" height="80" />
+        <dc:Bounds x="1127" y="348" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_08cd70h_di" bpmnElement="SequenceFlow_08cd70h">
-        <di:waypoint x="1227" y="390" />
-        <di:waypoint x="1255" y="390" />
+        <di:waypoint x="1227" y="388" />
+        <di:waypoint x="1255" y="388" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_12oegda_di" bpmnElement="DataOutputAssociation_12oegda">
-        <di:waypoint x="1225" y="426" />
-        <di:waypoint x="1280" y="467" />
+        <di:waypoint x="1225" y="424" />
+        <di:waypoint x="1280" y="465" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="DataStoreReference_0w0wc73_di" bpmnElement="DataStoreReference_0w0wc73">
         <dc:Bounds x="2857" y="1277" width="50" height="50" />
@@ -1444,6 +1551,106 @@
       <bpmndi:BPMNEdge id="DataOutputAssociation_10vptsn_di" bpmnElement="DataOutputAssociation_10vptsn">
         <di:waypoint x="2882" y="1242" />
         <di:waypoint x="2882" y="1277" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_1xyt6np_di" bpmnElement="IntermediateThrowEvent_0ixixr1">
+        <dc:Bounds x="845" y="414" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="845" y="457" width="36" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1cvzq08_di" bpmnElement="SequenceFlow_1cvzq08">
+        <di:waypoint x="1611" y="1151" />
+        <di:waypoint x="1709" y="1151" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1fg1k88_di" bpmnElement="SequenceFlow_1fg1k88">
+        <di:waypoint x="1483" y="388" />
+        <di:waypoint x="1531" y="388" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_10wij9x_di" bpmnElement="SequenceFlow_10wij9x">
+        <di:waypoint x="721" y="431" />
+        <di:waypoint x="751" y="431" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0hshk24_di" bpmnElement="SequenceFlow_0hshk24">
+        <di:waypoint x="881" y="432" />
+        <di:waypoint x="919" y="432" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_1or93f3_di" bpmnElement="IntermediateThrowEvent_1or93f3">
+        <dc:Bounds x="1264" y="647" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1218" y="651" width="36" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0bfnrtu_di" bpmnElement="SequenceFlow_0bfnrtu">
+        <di:waypoint x="1282" y="683" />
+        <di:waypoint x="1282" y="897" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_0u914yb_di" bpmnElement="IntermediateThrowEvent_0u914yb">
+        <dc:Bounds x="1827" y="1135" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1827" y="1097.5" width="36" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0jbykf8_di" bpmnElement="SequenceFlow_0jbykf8">
+        <di:waypoint x="1863" y="1153" />
+        <di:waypoint x="1932" y="1153" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_1ncehdh_di" bpmnElement="IntermediateThrowEvent_1ncehdh">
+        <dc:Bounds x="2636" y="1135" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2636" y="1098" width="36" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0wdkm76_di" bpmnElement="SequenceFlow_0wdkm76">
+        <di:waypoint x="2672" y="1153" />
+        <di:waypoint x="2743" y="1153" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_127xneu_di" bpmnElement="IntermediateThrowEvent_127xneu">
+        <dc:Bounds x="3923" y="1185" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3923" y="1228" width="36" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1eq2d78_di" bpmnElement="SequenceFlow_1eq2d78">
+        <di:waypoint x="3959" y="1203" />
+        <di:waypoint x="4023" y="1203" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_0lsh2z7_di" bpmnElement="IntermediateThrowEvent_0lsh2z7">
+        <dc:Bounds x="4321" y="405" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4321" y="448" width="36" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1c71t1g_di" bpmnElement="SequenceFlow_1c71t1g">
+        <di:waypoint x="4357" y="423" />
+        <di:waypoint x="4393" y="423" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_14iosaj_di" bpmnElement="DataOutputAssociation_14iosaj">
+        <di:waypoint x="1931" y="1035" />
+        <di:waypoint x="1876" y="1035" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DataStoreReference_1bezecn_di" bpmnElement="DataStoreReference_1bezecn">
+        <dc:Bounds x="2629" y="1010" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2625" y="1070" width="59" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1f4i8zc_di" bpmnElement="DataOutputAssociation_1f4i8zc">
+        <di:waypoint x="2561" y="1035" />
+        <di:waypoint x="2629" y="1035" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1h0ma5x_di" bpmnElement="DataOutputAssociation_1h0ma5x">
+        <di:waypoint x="2743" y="1035" />
+        <di:waypoint x="2679" y="1035" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DataStoreReference_1w07gje_di" bpmnElement="DataStoreReference_1w07gje">
+        <dc:Bounds x="1292" y="982" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1293" y="952" width="49" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_10o89kx_di" bpmnElement="DataOutputAssociation_10o89kx">
+        <di:waypoint x="1317" y="1133" />
+        <di:waypoint x="1317" y="1032" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
