@@ -456,21 +456,7 @@
                 </camunda:map>
               </camunda:inputParameter>
               <camunda:inputParameter name="payload">
-                <camunda:script scriptFormat="javascript">out = JSON.stringify({
-                        "requestID" : requestID,
-                        "clientID" : clientID,
-                        "yearEndDate" : yearEndDate,
-                        "emailAuditTeam" : emailAuditTeam,
-                        "nameDataProvider" : nameDataProvider,
-                        "emailDataProvider" : emailDataProvider,
-                        "productSelection" : productSelection,
-                        "deliveryDate" : deliveryDate,
-                        "coveredPeriod" : coveredPeriod,
-                        "analysisDate" : analysisDate,
-                        "comparativeDate" : comparativeDate,
-                        "closureOfAccounts" : closureOfAccounts,
-                        "freeText" : freeText
-                });</camunda:script>
+                <camunda:script scriptFormat="javascript" resource="scripts/CamundaOpenRequestRequest.js" />
               </camunda:inputParameter>
               <camunda:outputParameter name="requestFolderID">
                 <camunda:script scriptFormat="JavaScript">object=JSON.parse(response);
