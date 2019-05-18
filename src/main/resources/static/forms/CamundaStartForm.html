@@ -1,34 +1,98 @@
-<h3>Embedded Forms Quickstart</h3>
+<h3>Request Form</h3>
 <form role="form" name="variablesForm">
 
-    <!-- Firstname -->
     <div class="form-group">
-        <label for="inputFirstname">First Name</label>
+        <label for="inputClientID">Client ID</label>
         <div class="controls">
           <input class="form-control"
                 required
                 type="text"
-                cam-variable-name="firstname"
+                cam-variable-name="clientID"
                 cam-variable-type="String"
-                placeholder="John"
+                placeholder="Fachhochschule Nordwestschweiz"
                 ng-minlength="2"
                 ng-maxlength="20" />
         </div>
       </div>
 
-      <!-- Lastname -->
       <div class="form-group">
-        <label for="inputLastname">Last Name</label>
+          <label for="inputEmailAuditTeam">eMail audit team</label>
+          <div class="controls">
+            <input class="form-control"
+                  required
+                  type="text"
+                  cam-variable-name="emailAuditTeam"
+                  cam-variable-type="String"
+                  placeholder="abu.the.ape@banana-analytics.ch"
+                  ng-minlength="2"
+                  ng-maxlength="40" />
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label for="inputNameDataProvider">Name data provider</label>
+          <div class="controls">
+            <input class="form-control"
+                  required
+                  type="text"
+                  cam-variable-name="nameDataProvider"
+                  cam-variable-type="String"
+                  placeholder="John Doe"
+                  ng-minlength="2"
+                  ng-maxlength="40" />
+          </div>
+        </div>
+
+      <div class="form-group">
+          <label for="inputEmailDataProvider">eMail data provider</label>
+          <div class="controls">
+            <input class="form-control"
+                  required
+                  type="text"
+                  cam-variable-name="emailDataProvider"
+                  cam-variable-type="String"
+                  placeholder="john.doe@fhnw.ch"
+                  ng-minlength="2"
+                  ng-maxlength="40" />
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputCoveredPeriod">Covered period</label>
         <div class="controls">
           <input class="form-control"
                 required
                 type="text"
-                cam-variable-name="lastname"
+                cam-variable-name="coveredPeriod"
                 cam-variable-type="String"
-                placeholder="Doe"
+                placeholder="dd-MM-yyyy - dd-MM-yyyy / eg. 01-01-2010 - 31-12-2010"
                 ng-minlength="2"
-                ng-maxlength="20" />
+                ng-maxlength="50" />
         </div>
       </div>
+
+      <div class="form-group">
+          <label for="inputClosureOfAccounts">Closure of accounts</label>
+          <div class="controls">
+            <input class="form-control"
+                  required
+                  type="text"
+                  cam-variable-name="closureOfAccounts"
+                  cam-variable-type="String"
+                  placeholder="dd-MM-yyyy / eg. 01-01-2010"
+                  ng-minlength="2"
+                  ng-maxlength="20" />
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputFreeText">Message</label>
+            <div class="controls">
+              <textarea class="form-control"
+                        cam-variable-name="freeText"
+                        cam-variable-type="String"
+                        rows="4"></textarea>
+            </div>
+        </div>
 
 </form>
