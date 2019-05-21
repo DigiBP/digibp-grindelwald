@@ -808,10 +808,6 @@
       <bpmn:incoming>SequenceFlow_0p9nyj6</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0fwmzye" sourceRef="Task_0s0eyij" targetRef="EndEvent_191heag" />
-    <bpmn:intermediateCatchEvent id="EndEvent_191heag">
-      <bpmn:incoming>SequenceFlow_0fwmzye</bpmn:incoming>
-      <bpmn:messageEventDefinition />
-    </bpmn:intermediateCatchEvent>
     <bpmn:subProcess id="SubProcess_086cw8p" name="Cancel" triggeredByEvent="true">
       <bpmn:task id="Task_0pcpf8z" name="Cancel request">
         <bpmn:incoming>SequenceFlow_0aw2jpi</bpmn:incoming>
@@ -827,7 +823,7 @@
       <bpmn:sequenceFlow id="SequenceFlow_07ykdoo" sourceRef="Task_0pcpf8z" targetRef="IntermediateThrowEvent_0s30jjp" />
       <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1tzjpde" name="Cance request (system)">
         <bpmn:outgoing>SequenceFlow_0aw2jpi</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_00c4g3d" />
+        <bpmn:messageEventDefinition id="MessageEventDefinition_00c4g3d" messageRef="Message_1y3spm0" />
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="SequenceFlow_0aw2jpi" sourceRef="IntermediateCatchEvent_1tzjpde" targetRef="Task_0pcpf8z" />
       <bpmn:endEvent id="EndEvent_0axslzm" name="Terminate">
@@ -836,6 +832,10 @@
       </bpmn:endEvent>
       <bpmn:sequenceFlow id="SequenceFlow_0dgfq1g" sourceRef="IntermediateThrowEvent_0s30jjp" targetRef="EndEvent_0axslzm" />
     </bpmn:subProcess>
+    <bpmn:intermediateThrowEvent id="EndEvent_191heag">
+      <bpmn:incoming>SequenceFlow_0fwmzye</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1axqesm" messageRef="Message_1y3spm0" />
+    </bpmn:intermediateThrowEvent>
     <bpmn:association id="Association_0u71dcj" sourceRef="Task_0qv5yez" targetRef="TextAnnotation_1m4l79w" />
     <bpmn:textAnnotation id="TextAnnotation_1m4l79w">
       <bpmn:text>Reason for human intervention: requires formalization of data extraction and transformation</bpmn:text>
@@ -1569,7 +1569,7 @@
         <di:waypoint x="754" y="358" />
         <di:waypoint x="780" y="358" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_0pqypsn_di" bpmnElement="EndEvent_191heag">
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_0d6qnn1_di" bpmnElement="EndEvent_191heag">
         <dc:Bounds x="780" y="340" width="36" height="36" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
