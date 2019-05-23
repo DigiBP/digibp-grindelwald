@@ -5,10 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@EnableProcessApplication
+@EnableProcessApplication("digibp-gindelwald")
 public class ProcessApplication {
 
-	public static void main(String[] args) {
+	public static void main(String... args) {
 		SpringApplication.run(ProcessApplication.class, args);
 	}
 
