@@ -36,7 +36,7 @@ public class StatusService {
         headers.setContentType(MediaType.APPLICATION_JSON);
       
         SpinJsonNode requestJson = Spin.JSON("{}");
-        requestJson.prop("requresID", requresID);
+        requestJson.prop("requestID", requresID);
         requestJson.prop("status", status);
       
         HttpEntity<String> request = new HttpEntity<>(requestJson.toString(), headers);
