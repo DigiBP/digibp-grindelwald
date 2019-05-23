@@ -10,14 +10,14 @@
     <bpmn:laneSet id="LaneSet_12io5yh">
       <bpmn:lane id="Lane_1tufk81" name="Request Management">
         <bpmn:documentation>transformationErrorMsg</bpmn:documentation>
-        <bpmn:flowNodeRef>Task_08ory9o</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>EndEvent_040dklh</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>SubProcess_0hlli6c</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>SubProcess_0rt8urd</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_0fi84m3</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>SubProcess_086cw8p</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>cancelRequestTask</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>cancellationEvent</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_012xp0a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_040dklh</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1hq1fqm" name="Data Delivery">
         <bpmn:flowNodeRef>IntermediateThrowEvent_1iwf5c0</bpmn:flowNodeRef>
@@ -85,7 +85,7 @@
         </camunda:executionListener>
       </bpmn:extensionElements>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_0agtfeu" name="FINALIZED" sourceRef="Task_01m9ukw" targetRef="Task_08ory9o">
+    <bpmn:sequenceFlow id="SequenceFlow_0agtfeu" name="FINALIZED" sourceRef="Task_01m9ukw" targetRef="Task_012xp0a">
       <bpmn:extensionElements>
         <camunda:executionListener delegateExpression="${SendStatusUpdate}" event="take">
           <camunda:field name="status">
@@ -172,7 +172,7 @@
         <bpmn:incoming>SequenceFlow_1epauo5</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_1hrse6z</bpmn:outgoing>
       </bpmn:userTask>
-      <bpmn:endEvent id="EndEvent_0nd1e7k" name="Sucess">
+      <bpmn:endEvent id="EndEvent_0nd1e7k" name="Success">
         <bpmn:incoming>SequenceFlow_0g63997</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:sequenceFlow id="SequenceFlow_1epauo5" sourceRef="Task_0wdd1jq" targetRef="Task_0ruv7is" />
@@ -203,7 +203,7 @@
         <bpmn:outgoing>SequenceFlow_1fwerb1</bpmn:outgoing>
       </bpmn:userTask>
       <bpmn:sequenceFlow id="SequenceFlow_1fwerb1" sourceRef="Task_1kukhmr" targetRef="ExclusiveGateway_0pf4k6s" />
-      <bpmn:dataStoreReference id="DataStoreReference_0w0wc73" name="Analytics solution" />
+      <bpmn:dataStoreReference id="DataStoreReference_0w0wc73" name="Analytics" />
       <bpmn:sequenceFlow id="SequenceFlow_11b2jus" name="No" sourceRef="ExclusiveGateway_17oppww" targetRef="IntermediateThrowEvent_1rtxok9">
         <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{validMetadata == "no"}</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
@@ -358,15 +358,6 @@
       <bpmn:association id="Association_1y4w4zh" sourceRef="UserTask_00d0xom" targetRef="TextAnnotation_0mif3pc" />
     </bpmn:subProcess>
     <bpmn:dataStoreReference id="DataStoreReference_0vmvza2" name="Team-share" />
-    <bpmn:sequenceFlow id="SequenceFlow_0p9nyj6" name="FULFILLED" sourceRef="Task_08ory9o" targetRef="EndEvent_040dklh">
-      <bpmn:extensionElements>
-        <camunda:executionListener delegateExpression="${SendStatusUpdate}" event="take">
-          <camunda:field name="status">
-            <camunda:string>FULFILLED</camunda:string>
-          </camunda:field>
-        </camunda:executionListener>
-      </bpmn:extensionElements>
-    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0eqa1fn" name="RETRY" sourceRef="IntermediateThrowEvent_0iu3m65" targetRef="Task_008cprz">
       <bpmn:extensionElements>
         <camunda:executionListener delegateExpression="${SendStatusUpdate}" event="take">
@@ -439,72 +430,7 @@
       </bpmn:textAnnotation>
       <bpmn:association id="Association_1aonjed" sourceRef="Task_1uvq6qn" targetRef="TextAnnotation_07wrycj" />
     </bpmn:subProcess>
-    <bpmn:subProcess id="Task_08ory9o" name="Close Request" camunda:asyncBefore="true">
-      <bpmn:incoming>SequenceFlow_0agtfeu</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0p9nyj6</bpmn:outgoing>
-      <bpmn:sendTask id="Task_012xp0a" name="Send request fullfilment confirmation">
-        <bpmn:extensionElements>
-          <camunda:connector>
-            <camunda:inputOutput>
-              <camunda:inputParameter name="method">POST</camunda:inputParameter>
-              <camunda:inputParameter name="url">https://enamnpi8uf6fi.x.pipedream.net</camunda:inputParameter>
-              <camunda:inputParameter name="headers">
-                <camunda:map>
-                  <camunda:entry key="Content-Type">application/json</camunda:entry>
-                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
-                </camunda:map>
-              </camunda:inputParameter>
-              <camunda:inputParameter name="payload">
-                <camunda:script scriptFormat="javascript" resource="scripts/CamundaRequestFulfillmentMail.js" />
-              </camunda:inputParameter>
-            </camunda:inputOutput>
-            <camunda:connectorId>http-connector</camunda:connectorId>
-          </camunda:connector>
-        </bpmn:extensionElements>
-        <bpmn:incoming>SequenceFlow_0kvtero</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_1n9thcq</bpmn:outgoing>
-      </bpmn:sendTask>
-      <bpmn:endEvent id="EndEvent_1ye8fnu">
-        <bpmn:incoming>SequenceFlow_18ctgub</bpmn:incoming>
-      </bpmn:endEvent>
-      <bpmn:sequenceFlow id="SequenceFlow_1n9thcq" sourceRef="Task_012xp0a" targetRef="IntermediateThrowEvent_0lsh2z7" />
-      <bpmn:startEvent id="StartEvent_1rpsm8z">
-        <bpmn:outgoing>SequenceFlow_0kvtero</bpmn:outgoing>
-      </bpmn:startEvent>
-      <bpmn:sequenceFlow id="SequenceFlow_0kvtero" sourceRef="StartEvent_1rpsm8z" targetRef="Task_012xp0a" />
-      <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0lsh2z7" name="Update&#10;status">
-        <bpmn:incoming>SequenceFlow_1n9thcq</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_18ctgub</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_0h0jmec">
-          <bpmn:extensionElements>
-            <camunda:connector>
-              <camunda:inputOutput>
-                <camunda:inputParameter name="method">POST</camunda:inputParameter>
-                <camunda:inputParameter name="url">https://hook.integromat.com/phxd3eepyetckunbowpf7ps9a3y4hk76</camunda:inputParameter>
-                <camunda:inputParameter name="headers">
-                  <camunda:map>
-                    <camunda:entry key="Content-Type">application/json</camunda:entry>
-                  </camunda:map>
-                </camunda:inputParameter>
-                <camunda:inputParameter name="payload">
-                  <camunda:script scriptFormat="javascript">out = JSON.stringify({
-                    "requestID":requestID,
-                    "status":"FULFILLED"
-                });</camunda:script>
-                </camunda:inputParameter>
-              </camunda:inputOutput>
-              <camunda:connectorId>http-connector</camunda:connectorId>
-            </camunda:connector>
-          </bpmn:extensionElements>
-        </bpmn:messageEventDefinition>
-      </bpmn:intermediateThrowEvent>
-      <bpmn:sequenceFlow id="SequenceFlow_18ctgub" sourceRef="IntermediateThrowEvent_0lsh2z7" targetRef="EndEvent_1ye8fnu" />
-    </bpmn:subProcess>
     <bpmn:sequenceFlow id="SequenceFlow_14g1svw" sourceRef="requestEvent" targetRef="SubProcess_0hlli6c" />
-    <bpmn:endEvent id="EndEvent_040dklh" name="Request fulfilled">
-      <bpmn:incoming>SequenceFlow_0p9nyj6</bpmn:incoming>
-      <bpmn:terminateEventDefinition />
-    </bpmn:endEvent>
     <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_1iwf5c0" name="Shortcut to datacube finalization">
       <bpmn:outgoing>SequenceFlow_0qzuk4w</bpmn:outgoing>
       <bpmn:linkEventDefinition name="redoDF" />
@@ -801,6 +727,33 @@
       <bpmn:incoming>SequenceFlow_0sli3he</bpmn:incoming>
       <bpmn:signalEventDefinition signalRef="Signal_1acs0wp" />
     </bpmn:intermediateThrowEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0gz491z" sourceRef="Task_012xp0a" targetRef="EndEvent_040dklh" />
+    <bpmn:sendTask id="Task_012xp0a" name="Send request fullfilment confirmation">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">POST</camunda:inputParameter>
+            <camunda:inputParameter name="url">https://enamnpi8uf6fi.x.pipedream.net</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+                <camunda:entry key="authorization">Bearer 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</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="javascript" resource="scripts/CamundaRequestFulfillmentMail.js" />
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0agtfeu</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0gz491z</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:endEvent id="EndEvent_040dklh" name="Request fulfilled">
+      <bpmn:incoming>SequenceFlow_0gz491z</bpmn:incoming>
+      <bpmn:terminateEventDefinition />
+    </bpmn:endEvent>
     <bpmn:association id="Association_0u71dcj" sourceRef="Task_0qv5yez" targetRef="TextAnnotation_1m4l79w" />
     <bpmn:textAnnotation id="TextAnnotation_1m4l79w">
       <bpmn:text>Reason for human intervention: requires formalization of data extraction and transformation</bpmn:text>
@@ -954,14 +907,14 @@
       <bpmndi:BPMNShape id="EndEvent_0nd1e7k_di" bpmnElement="EndEvent_0nd1e7k">
         <dc:Bounds x="3569" y="1198" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3522" y="1193" width="37" height="14" />
+          <dc:Bounds x="3519" y="1193" width="43" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SendTask_1pu5bot_di" bpmnElement="sendRequestConfirmationTask">
         <dc:Bounds x="502" y="464" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SendTask_1mvwk2s_di" bpmnElement="Task_012xp0a">
-        <dc:Bounds x="3745" y="489" width="100" height="80" />
+        <dc:Bounds x="3810" y="484" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1epauo5_di" bpmnElement="SequenceFlow_1epauo5">
         <di:waypoint x="2929" y="1310" />
@@ -977,23 +930,6 @@
       <bpmndi:BPMNShape id="Lane_1hq1fqm_di" bpmnElement="Lane_1hq1fqm" isHorizontal="true">
         <dc:Bounds x="181" y="950" width="4091" height="780" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="SubProcess_0opk7if_di" bpmnElement="Task_08ory9o" isExpanded="true" bioc:stroke="black" bioc:fill="white">
-        <dc:Bounds x="3634" y="438" width="426" height="171" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="EndEvent_1ye8fnu_di" bpmnElement="EndEvent_1ye8fnu">
-        <dc:Bounds x="3970" y="511" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1n9thcq_di" bpmnElement="SequenceFlow_1n9thcq">
-        <di:waypoint x="3845" y="529" />
-        <di:waypoint x="3891" y="529" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="StartEvent_1rpsm8z_di" bpmnElement="StartEvent_1rpsm8z">
-        <dc:Bounds x="3673" y="511" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0kvtero_di" bpmnElement="SequenceFlow_0kvtero">
-        <di:waypoint x="3709" y="529" />
-        <di:waypoint x="3745" y="529" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_07wrycj_di" bpmnElement="TextAnnotation_07wrycj">
         <dc:Bounds x="1961" y="1191" width="255" height="47" />
       </bpmndi:BPMNShape>
@@ -1194,7 +1130,7 @@
       <bpmndi:BPMNShape id="DataStoreReference_0w0wc73_di" bpmnElement="DataStoreReference_0w0wc73">
         <dc:Bounds x="2854" y="1385" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2836" y="1445" width="85" height="14" />
+          <dc:Bounds x="2856" y="1445" width="45" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DataOutputAssociation_10vptsn_di" bpmnElement="DataOutputAssociation_10vptsn">
@@ -1213,12 +1149,6 @@
         <di:waypoint x="602" y="504" />
         <di:waypoint x="632" y="504" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="IntermediateThrowEvent_0lsh2z7_di" bpmnElement="IntermediateThrowEvent_0lsh2z7">
-        <dc:Bounds x="3891" y="511" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="3891" y="557" width="36" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DataOutputAssociation_14iosaj_di" bpmnElement="DataOutputAssociation_14iosaj">
         <di:waypoint x="1871" y="1196" />
         <di:waypoint x="1812" y="1196" />
@@ -1345,7 +1275,7 @@
       <bpmndi:BPMNEdge id="SequenceFlow_0agtfeu_di" bpmnElement="SequenceFlow_0agtfeu">
         <di:waypoint x="3659" y="1338" />
         <di:waypoint x="3860" y="1338" />
-        <di:waypoint x="3860" y="609" />
+        <di:waypoint x="3860" y="564" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="3731" y="1320" width="57" height="14" />
         </bpmndi:BPMNLabel>
@@ -1436,17 +1366,6 @@
         <di:waypoint x="2928" y="151" />
         <di:waypoint x="2893" y="151" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_18ctgub_di" bpmnElement="SequenceFlow_18ctgub">
-        <di:waypoint x="3927" y="529" />
-        <di:waypoint x="3970" y="529" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_0p9nyj6_di" bpmnElement="SequenceFlow_0p9nyj6">
-        <di:waypoint x="4060" y="524" />
-        <di:waypoint x="4202" y="524" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="4109" y="506" width="59" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="SubProcess_1p86461_di" bpmnElement="SubProcess_086cw8p" isExpanded="true">
         <dc:Bounds x="253" y="666" width="435" height="186" />
       </bpmndi:BPMNShape>
@@ -1494,9 +1413,9 @@
         <di:waypoint x="309" y="368" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_18skrko_di" bpmnElement="EndEvent_040dklh">
-        <dc:Bounds x="4202" y="506" width="36" height="36" />
+        <dc:Bounds x="3968" y="506" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="4180" y="482" width="79" height="14" />
+          <dc:Bounds x="3946" y="482" width="79" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="IntermediateThrowEvent_1mzw6jv_di" bpmnElement="cancellationEvent">
@@ -1520,6 +1439,10 @@
           <dc:Bounds x="279" y="782" width="72" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0gz491z_di" bpmnElement="SequenceFlow_0gz491z">
+        <di:waypoint x="3910" y="524" />
+        <di:waypoint x="3968" y="524" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
