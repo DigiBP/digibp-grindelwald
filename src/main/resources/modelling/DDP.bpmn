@@ -291,11 +291,11 @@
           <camunda:connector>
             <camunda:inputOutput>
               <camunda:inputParameter name="method">POST</camunda:inputParameter>
-              <camunda:inputParameter name="url">https://enu5ehp3ask7l.x.pipedream.net</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://api.sendgrid.com/v3/mail/send</camunda:inputParameter>
               <camunda:inputParameter name="headers">
                 <camunda:map>
                   <camunda:entry key="Content-Type">application/json</camunda:entry>
-                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
+                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
                 </camunda:map>
               </camunda:inputParameter>
               <camunda:inputParameter name="payload">
@@ -451,11 +451,11 @@
           <camunda:connector>
             <camunda:inputOutput>
               <camunda:inputParameter name="method">POST</camunda:inputParameter>
-              <camunda:inputParameter name="url">https://enu5ehp3ask7l.x.pipedream.net</camunda:inputParameter>
+              <camunda:inputParameter name="url">https://api.sendgrid.com/v3/mail/send</camunda:inputParameter>
               <camunda:inputParameter name="headers">
                 <camunda:map>
                   <camunda:entry key="Content-Type">application/json</camunda:entry>
-                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
+                  <camunda:entry key="authorization">Bearer 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</camunda:entry>
                 </camunda:map>
               </camunda:inputParameter>
               <camunda:inputParameter name="payload">
@@ -733,11 +733,11 @@
         <camunda:connector>
           <camunda:inputOutput>
             <camunda:inputParameter name="method">POST</camunda:inputParameter>
-            <camunda:inputParameter name="url">https://enu5ehp3ask7l.x.pipedream.net</camunda:inputParameter>
+            <camunda:inputParameter name="url">https://api.sendgrid.com/v3/mail/send</camunda:inputParameter>
             <camunda:inputParameter name="headers">
               <camunda:map>
                 <camunda:entry key="Content-Type">application/json</camunda:entry>
-                <camunda:entry key="authorization">Bearer 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</camunda:entry>
+                <camunda:entry key="authorization">Bearer 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</camunda:entry>
               </camunda:map>
             </camunda:inputParameter>
             <camunda:inputParameter name="payload">
