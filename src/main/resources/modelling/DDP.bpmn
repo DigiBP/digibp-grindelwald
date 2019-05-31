@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0xuj4kr" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.1.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0xuj4kr" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-beta.2">
   <bpmn:collaboration id="Collaboration_07vxun3">
     <bpmn:participant id="Participant_1x7g98v" name="Data Delivery Process" processRef="DDP-001" />
     <bpmn:participant id="Participant_0vyu7cu" name="Data Provider" />
@@ -727,7 +727,15 @@
       <bpmn:incoming>SequenceFlow_0sli3he</bpmn:incoming>
       <bpmn:signalEventDefinition signalRef="Signal_1acs0wp" />
     </bpmn:intermediateThrowEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_0gz491z" sourceRef="Task_012xp0a" targetRef="EndEvent_040dklh" />
+    <bpmn:sequenceFlow id="SequenceFlow_0gz491z" name="FULFILLED" sourceRef="Task_012xp0a" targetRef="EndEvent_040dklh">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${SendStatusUpdate}" event="take">
+          <camunda:field name="status">
+            <camunda:string>FULFILLED</camunda:string>
+          </camunda:field>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+    </bpmn:sequenceFlow>
     <bpmn:sendTask id="Task_012xp0a" name="Send request fullfilment confirmation">
       <bpmn:extensionElements>
         <camunda:connector>
@@ -1413,9 +1421,9 @@
         <di:waypoint x="309" y="368" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_18skrko_di" bpmnElement="EndEvent_040dklh">
-        <dc:Bounds x="3968" y="506" width="36" height="36" />
+        <dc:Bounds x="4130" y="506" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3946" y="482" width="79" height="14" />
+          <dc:Bounds x="4108" y="482" width="79" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="IntermediateThrowEvent_1mzw6jv_di" bpmnElement="cancellationEvent">
@@ -1441,7 +1449,10 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0gz491z_di" bpmnElement="SequenceFlow_0gz491z">
         <di:waypoint x="3910" y="524" />
-        <di:waypoint x="3968" y="524" />
+        <di:waypoint x="4130" y="524" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3991" y="506" width="59" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
