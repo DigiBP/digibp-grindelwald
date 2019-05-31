@@ -1,0 +1,303 @@
+[
+  {
+    "id": "b6d38c19-711b-423c-ae64-fcd04f41d057",
+    "data": [
+      {
+        "text": "Can you give me some ",
+        "userDefined": false
+      },
+      {
+        "text": "information",
+        "alias": "Status",
+        "meta": "@Status",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "2dbbc62a-13e3-418f-b993-55cefc2c49e6",
+    "data": [
+      {
+        "text": "I would like some ",
+        "userDefined": false
+      },
+      {
+        "text": "information",
+        "alias": "Status",
+        "meta": "@Status",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "e382523b-58e9-4a9a-a93c-bb5ae50db6ca",
+    "data": [
+      {
+        "text": "When is my ",
+        "userDefined": false
+      },
+      {
+        "text": "engagement",
+        "alias": "Cube",
+        "meta": "@Cube",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "delivered",
+        "alias": "SearchAction",
+        "meta": "@SearchActions",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "c32fbbf6-9c22-49bd-9f89-4964addac7ca",
+    "data": [
+      {
+        "text": "When is my ",
+        "userDefined": false
+      },
+      {
+        "text": "project",
+        "alias": "Cube",
+        "meta": "@Cube",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "delivered",
+        "alias": "SearchAction",
+        "meta": "@SearchActions",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "01ed8fbf-ef4c-477b-8c93-d61d43fa1c67",
+    "data": [
+      {
+        "text": "At what date is my ",
+        "userDefined": false
+      },
+      {
+        "text": "cube",
+        "alias": "Cube",
+        "meta": "@Cube",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "delivered",
+        "alias": "SearchAction",
+        "meta": "@SearchActions",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "82ecefe6-945f-4838-a8b0-6cab53466045",
+    "data": [
+      {
+        "text": "When can I ",
+        "userDefined": false
+      },
+      {
+        "text": "get",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": " my ",
+        "userDefined": false
+      },
+      {
+        "text": "cube",
+        "alias": "Cube",
+        "meta": "@Cube",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "7c7206c7-2e41-4073-81de-f1888ed2092c",
+    "data": [
+      {
+        "text": "What is the delivery ",
+        "userDefined": false
+      },
+      {
+        "text": "date of",
+        "alias": "SearchAction",
+        "meta": "@SearchActions",
+        "userDefined": true
+      },
+      {
+        "text": " my ",
+        "userDefined": false
+      },
+      {
+        "text": "cube",
+        "alias": "Cube",
+        "meta": "@Cube",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "c7f037a3-7876-4827-949d-b17c103a577f",
+    "data": [
+      {
+        "text": "When is my ",
+        "userDefined": false
+      },
+      {
+        "text": "cube",
+        "alias": "Cube",
+        "meta": "@Cube",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "delivered",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "78f38658-fa37-440d-9f46-27da45b44bc6",
+    "data": [
+      {
+        "text": "textbox_sample0",
+        "alias": "ClientName",
+        "meta": "@Client_Names",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "9ecbe37b-9731-4cff-ab30-cc9ed202df1d",
+    "data": [
+      {
+        "text": "When does my ",
+        "userDefined": false
+      },
+      {
+        "text": "cube",
+        "alias": "Cube",
+        "meta": "@Cube",
+        "userDefined": true
+      },
+      {
+        "text": " get ",
+        "userDefined": false
+      },
+      {
+        "text": "delivered",
+        "alias": "SearchAction",
+        "meta": "@SearchActions",
+        "userDefined": true
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "3befa2fd-2ea5-4d0b-9189-fe5b7363955d",
+    "data": [
+      {
+        "text": "textbox_YE",
+        "alias": "ClientName",
+        "meta": "@Client_Names",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "90477834-23d6-460e-9567-bc0db5e9eb33",
+    "data": [
+      {
+        "text": "textbox_sample1",
+        "alias": "ClientName",
+        "meta": "@Client_Names",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "80c7f861-8064-4725-a0f8-816e6c061b5c",
+    "data": [
+      {
+        "text": "a@b.com",
+        "alias": "ClientName",
+        "meta": "@Client_Names",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  }
+]

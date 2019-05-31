@@ -1,0 +1,44 @@
+[
+  {
+    "value": "ECorp",
+    "synonyms": [
+      "ECorp"
+    ]
+  },
+  {
+    "value": "SBB_YE",
+    "synonyms": [
+      "SBB_YE"
+    ]
+  },
+  {
+    "value": "TestClient_YE",
+    "synonyms": [
+      "TestClient_YE"
+    ]
+  },
+  {
+    "value": "a@b.ch",
+    "synonyms": [
+      "a@b.ch"
+    ]
+  },
+  {
+    "value": "a@b.com",
+    "synonyms": [
+      "a@b.com"
+    ]
+  },
+  {
+    "value": "textbox_YE",
+    "synonyms": [
+      "textbox_YE"
+    ]
+  },
+  {
+    "value": "textbox_sample0",
+    "synonyms": [
+      "textbox_sample0"
+    ]
+  }
+]
