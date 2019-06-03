@@ -1,9 +1,0 @@
-{
-  "id": "8a08bb3f-9237-4a5f-96d8-4eb01daa6a0c",
-  "name": "Preparer",
-  "isOverridable": true,
-  "isEnum": false,
-  "isRegexp": false,
-  "automatedExpansion": true,
-  "allowFuzzyExtraction": false
-}

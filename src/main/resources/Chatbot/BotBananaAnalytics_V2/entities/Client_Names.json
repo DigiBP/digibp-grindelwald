@@ -1,9 +1,0 @@
-{
-  "id": "704a3091-6200-489f-9c9c-a078d35a3c90",
-  "name": "Client_Names",
-  "isOverridable": true,
-  "isEnum": false,
-  "isRegexp": false,
-  "automatedExpansion": true,
-  "allowFuzzyExtraction": false
-}

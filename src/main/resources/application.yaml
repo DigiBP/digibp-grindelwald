@@ -11,8 +11,6 @@ camunda:
 spring:
   profiles:
     active: local
-
-statusUpdateWebhookURL: "https://hook.integromat.com/phxd3eepyetckunbowpf7ps9a3y4hk76"
 #  datasource:
 #    url: jdbc:h2:file:./data/camunda
 #    username: sa

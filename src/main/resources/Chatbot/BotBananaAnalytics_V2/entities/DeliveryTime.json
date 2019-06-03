@@ -1,9 +1,0 @@
-{
-  "id": "d8e8aff6-aa4d-456a-a779-60d33613dd4a",
-  "name": "DeliveryTime",
-  "isOverridable": true,
-  "isEnum": false,
-  "isRegexp": false,
-  "automatedExpansion": false,
-  "allowFuzzyExtraction": false
-}
