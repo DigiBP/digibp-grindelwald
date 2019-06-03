@@ -1,47 +1,5 @@
 [
   {
-    "id": "6cf506e1-51a4-4637-a9d3-3d5a32473baf",
-    "data": [
-      {
-        "text": "Can I have some ",
-        "userDefined": false
-      },
-      {
-        "text": "information",
-        "alias": "Status",
-        "meta": "@Status",
-        "userDefined": false
-      },
-      {
-        "text": "?",
-        "userDefined": false
-      }
-    ],
-    "isTemplate": false,
-    "count": 0
-  },
-  {
-    "id": "7eb00acc-6dec-43ad-8996-c42df2a844aa",
-    "data": [
-      {
-        "text": "Can I have some ",
-        "userDefined": false
-      },
-      {
-        "text": "Info",
-        "alias": "Status",
-        "meta": "@Status",
-        "userDefined": true
-      },
-      {
-        "text": "?",
-        "userDefined": false
-      }
-    ],
-    "isTemplate": false,
-    "count": 0
-  },
-  {
     "id": "b6d38c19-711b-423c-ae64-fcd04f41d057",
     "data": [
       {
@@ -49,7 +7,7 @@
         "userDefined": false
       },
       {
-        "text": "information?",
+        "text": "information",
         "alias": "Status",
         "meta": "@Status",
         "userDefined": false
