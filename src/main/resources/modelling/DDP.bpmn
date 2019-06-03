@@ -129,7 +129,7 @@
       <bpmn:endEvent id="EndEvent_132af6z">
         <bpmn:incoming>SequenceFlow_1fg1k88</bpmn:incoming>
       </bpmn:endEvent>
-      <bpmn:serviceTask id="Task_1istru1" name="Prepare data extraction">
+      <bpmn:serviceTask id="Task_1istru1" name="Prepare data extraction" camunda:asyncBefore="true">
         <bpmn:extensionElements>
           <camunda:connector>
             <camunda:inputOutput>
@@ -171,7 +171,7 @@
           <bpmn:targetRef>DataStoreReference_1inf5wz</bpmn:targetRef>
         </bpmn:dataOutputAssociation>
       </bpmn:serviceTask>
-      <bpmn:serviceTask id="Task_1s7mngu" name="Prepare metadata validation">
+      <bpmn:serviceTask id="Task_1s7mngu" name="Prepare metadata validation" camunda:asyncBefore="true">
         <bpmn:extensionElements>
           <camunda:connector>
             <camunda:inputOutput>
@@ -208,7 +208,7 @@
           <bpmn:targetRef>DataStoreReference_0bfzun7</bpmn:targetRef>
         </bpmn:dataOutputAssociation>
       </bpmn:serviceTask>
-      <bpmn:serviceTask id="Task_12bm9lg" name="Prepare datacube upload">
+      <bpmn:serviceTask id="Task_12bm9lg" name="Prepare datacube upload" camunda:asyncBefore="true">
         <bpmn:extensionElements>
           <camunda:connector>
             <camunda:inputOutput>
@@ -245,7 +245,7 @@
       </bpmn:serviceTask>
       <bpmn:dataStoreReference id="DataStoreReference_1inf5wz" name="File-share" />
       <bpmn:dataStoreReference id="DataStoreReference_0bfzun7" name="Team-share" />
-      <bpmn:serviceTask id="ServiceTask_0fhfik4" name="Prepare data transformation">
+      <bpmn:serviceTask id="ServiceTask_0fhfik4" name="Prepare data transformation" camunda:asyncBefore="true">
         <bpmn:extensionElements>
           <camunda:connector>
             <camunda:inputOutput>
