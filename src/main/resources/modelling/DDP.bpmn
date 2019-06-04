@@ -15,9 +15,9 @@
         <bpmn:flowNodeRef>ExclusiveGateway_0fi84m3</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>SubProcess_086cw8p</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>cancelRequestTask</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>cancellationEvent</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_012xp0a</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_040dklh</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>cancellationEvent</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1hq1fqm" name="Data Delivery">
         <bpmn:flowNodeRef>IntermediateThrowEvent_1iwf5c0</bpmn:flowNodeRef>
@@ -696,7 +696,7 @@
       </bpmn:endEvent>
       <bpmn:startEvent id="IntermediateCatchEvent_1tzjpde" name="Cance request (system)" camunda:asyncBefore="true">
         <bpmn:outgoing>SequenceFlow_0aw2jpi</bpmn:outgoing>
-        <bpmn:signalEventDefinition signalRef="Signal_1acs0wp" />
+        <bpmn:escalationEventDefinition escalationRef="Escalation_0g5mwva" />
       </bpmn:startEvent>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="SequenceFlow_0xasplb" name="CONFIRMED" sourceRef="ExclusiveGateway_0fi84m3" targetRef="SubProcess_0rt8urd">
@@ -715,10 +715,6 @@
       <bpmn:incoming>SequenceFlow_1byorvu</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0fwmzye</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:intermediateThrowEvent id="cancellationEvent">
-      <bpmn:incoming>SequenceFlow_0fwmzye</bpmn:incoming>
-      <bpmn:signalEventDefinition signalRef="Signal_1acs0wp" />
-    </bpmn:intermediateThrowEvent>
     <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0vzymm9" name="Cancel">
       <bpmn:incoming>SequenceFlow_0w1c597</bpmn:incoming>
       <bpmn:signalEventDefinition signalRef="Signal_1acs0wp" />
@@ -762,6 +758,10 @@
       <bpmn:incoming>SequenceFlow_0gz491z</bpmn:incoming>
       <bpmn:terminateEventDefinition />
     </bpmn:endEvent>
+    <bpmn:intermediateThrowEvent id="cancellationEvent">
+      <bpmn:incoming>SequenceFlow_0fwmzye</bpmn:incoming>
+      <bpmn:escalationEventDefinition escalationRef="Escalation_0g5mwva" />
+    </bpmn:intermediateThrowEvent>
     <bpmn:association id="Association_0u71dcj" sourceRef="Task_0qv5yez" targetRef="TextAnnotation_1m4l79w" />
     <bpmn:textAnnotation id="TextAnnotation_1m4l79w">
       <bpmn:text>Reason for human intervention: requires formalization of data extraction and transformation</bpmn:text>
@@ -1426,9 +1426,6 @@
           <dc:Bounds x="4108" y="482" width="79" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="IntermediateThrowEvent_1mzw6jv_di" bpmnElement="cancellationEvent">
-        <dc:Bounds x="786" y="273" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="IntermediateThrowEvent_0n6yhw5_di" bpmnElement="IntermediateThrowEvent_0vzymm9">
         <dc:Bounds x="1753" y="1077" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -1441,12 +1438,6 @@
           <dc:Bounds x="3767" y="1074" width="34" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="StartEvent_15m8k3v_di" bpmnElement="IntermediateCatchEvent_1tzjpde">
-        <dc:Bounds x="297" y="736" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="279" y="782" width="72" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0gz491z_di" bpmnElement="SequenceFlow_0gz491z">
         <di:waypoint x="3910" y="524" />
         <di:waypoint x="4130" y="524" />
@@ -1454,6 +1445,15 @@
           <dc:Bounds x="3991" y="506" width="59" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_1u0bmow_di" bpmnElement="IntermediateCatchEvent_1tzjpde">
+        <dc:Bounds x="297" y="736" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="279" y="782" width="72" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_0109q26_di" bpmnElement="cancellationEvent">
+        <dc:Bounds x="786" y="273" width="36" height="36" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
