@@ -1,0 +1,9 @@
+{
+  "id": "bf243d1f-a473-45c7-8854-73315c9211ef",
+  "name": "SearchActions",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": true,
+  "allowFuzzyExtraction": false
+}

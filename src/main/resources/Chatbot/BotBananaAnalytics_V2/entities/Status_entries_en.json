@@ -1,0 +1,23 @@
+[
+  {
+    "value": "Going on",
+    "synonyms": [
+      "Going on",
+      "Whats up"
+    ]
+  },
+  {
+    "value": "Information about",
+    "synonyms": [
+      "Information",
+      "Information about"
+    ]
+  },
+  {
+    "value": "Stauts",
+    "synonyms": [
+      "State",
+      "Stauts"
+    ]
+  }
+]
