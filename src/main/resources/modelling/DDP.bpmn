@@ -253,7 +253,7 @@
         <bpmn:timeDate xsi:type="bpmn:tFormalExpression">${deliveryDate}</bpmn:timeDate>
       </bpmn:timerEventDefinition>
     </bpmn:boundaryEvent>
-    <bpmn:boundaryEvent id="BoundaryEvent_0632hxr" attachedToRef="Task_01m9ukw">
+    <bpmn:boundaryEvent id="BoundaryEvent_0632hxr" name="Request metadata completion" attachedToRef="Task_01m9ukw">
       <bpmn:outgoing>SequenceFlow_0piks5e</bpmn:outgoing>
       <bpmn:escalationEventDefinition escalationRef="Escalation_1p96b7z" />
     </bpmn:boundaryEvent>
@@ -1243,6 +1243,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="BoundaryEvent_144buwy_di" bpmnElement="BoundaryEvent_0632hxr">
         <dc:Bounds x="2957" y="1032" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2931" y="1075" width="90" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ExclusiveGateway_0pf4k6s_di" bpmnElement="ExclusiveGateway_0pf4k6s" isMarkerVisible="true">
         <dc:Bounds x="3417" y="1285" width="50" height="50" />
