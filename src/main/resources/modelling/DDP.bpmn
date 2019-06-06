@@ -1236,10 +1236,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0piks5e_di" bpmnElement="SequenceFlow_0piks5e">
         <di:waypoint x="2975" y="1032" />
-        <di:waypoint x="2975" y="151" />
         <di:waypoint x="2975" y="191" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2983" y="588" width="59" height="27" />
+          <dc:Bounds x="2984" y="608" width="58" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="BoundaryEvent_144buwy_di" bpmnElement="BoundaryEvent_0632hxr">
@@ -1445,13 +1444,13 @@
           <dc:Bounds x="3991" y="506" width="59" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="StartEvent_1u0bmow_di" bpmnElement="IntermediateCatchEvent_1tzjpde" bioc:stroke="rgb(229, 57, 53)" bioc:fill="rgb(255, 205, 210)">
+      <bpmndi:BPMNShape id="StartEvent_1u0bmow_di" bpmnElement="IntermediateCatchEvent_1tzjpde" bioc:stroke="black" bioc:fill="white">
         <dc:Bounds x="297" y="736" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="278" y="782" width="74" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="IntermediateThrowEvent_0109q26_di" bpmnElement="cancellationEvent" bioc:stroke="rgb(229, 57, 53)" bioc:fill="rgb(255, 205, 210)">
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_0109q26_di" bpmnElement="cancellationEvent" bioc:stroke="black" bioc:fill="white">
         <dc:Bounds x="786" y="273" width="36" height="36" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
